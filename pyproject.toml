@@ -1,0 +1,31 @@
+[project]
+name = "complexitty"
+version = "0.0.1"
+description = "Coming soon"
+authors = [
+    { name = "Dave Pearson", email = "davep@davep.org" }
+]
+dependencies = []
+readme = "README.md"
+requires-python = ">= 3.10"
+
+[build-system]
+# https://github.com/astral-sh/rye/issues/1446
+requires = ["hatchling==1.26.3", "hatch-vcs"]
+# requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/complexitty"]
+
+[tool.pyright]
+venvPath="."
+venv=".venv"
+exclude=[".venv"]
