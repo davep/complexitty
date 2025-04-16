@@ -83,7 +83,7 @@ textual==3.1.0
     # via textual-dev
     # via textual-enhanced
     # via textual-serve
-textual-canvas==0.3.0
+textual-canvas==0.4.0
     # via complexitty
 textual-dev==1.7.0
 textual-enhanced==0.11.0

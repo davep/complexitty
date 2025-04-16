@@ -75,26 +75,20 @@ class Mandelbrot(Canvas):
         """Initialise the widget."""
         super().__init__(0, 0)
 
-    def clear(self, color: Color | None = None) -> Self:
-        # TODO: Add this ability to textual-canvas.
-        self._width = self.size.width
-        self._height = self.size.height * 2
-        self.virtual_size = Size(self._width, ceil(self._height / 2))
-        return super().clear(color)
-
     @on(Mount)
     @on(Resize)
     def plot(self) -> Self:
         """Plot the Mandelbrot set."""
-        self.clear()
-        multibrot = self.multibrot
-        max_iteration = self.max_iteration
-        zoom = self.zoom
-        x_offset = self.x_position - ((self.width / 2) / zoom)
-        y_offset = self.y_position - ((self.height / 2) / zoom)
-        colour_map = self.colour_map
-        set_pixel = self.set_pixel
-        with self.batch_refresh():
+        with self.clear(
+            width=self.size.width, height=self.size.height * 2
+        ).batch_refresh():
+            multibrot = self.multibrot
+            max_iteration = self.max_iteration
+            zoom = self.zoom
+            x_offset = self.x_position - ((self.width / 2) / zoom)
+            y_offset = self.y_position - ((self.height / 2) / zoom)
+            colour_map = self.colour_map
+            set_pixel = self.set_pixel
             start = monotonic()
             for x_pixel, x_point in (
                 (pixel, (pixel / zoom) + x_offset) for pixel in range(self.width)
