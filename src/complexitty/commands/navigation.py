@@ -27,10 +27,24 @@ class MoveUp(Command):
 
 
 ##############################################################################
+class MoveUpSlowly(Command):
+    """Move up slowly"""
+
+    BINDING_KEY = "shift+up"
+
+
+##############################################################################
 class MoveDown(Command):
     """Move down"""
 
     BINDING_KEY = "down"
+
+
+##############################################################################
+class MoveDownSlowly(Command):
+    """Move down slowly"""
+
+    BINDING_KEY = "shift+down"
 
 
 ##############################################################################
@@ -41,10 +55,24 @@ class MoveLeft(Command):
 
 
 ##############################################################################
+class MoveLeftSlowly(Command):
+    """Move left slowly"""
+
+    BINDING_KEY = "shift+left"
+
+
+##############################################################################
 class MoveRight(Command):
     """Move right"""
 
     BINDING_KEY = "right"
+
+
+##############################################################################
+class MoveRightSlowly(Command):
+    """Move right slowly"""
+
+    BINDING_KEY = "shift+right"
 
 
 ### navigation.py ends here

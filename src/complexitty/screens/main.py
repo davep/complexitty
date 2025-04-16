@@ -13,7 +13,18 @@ from textual_enhanced.screen import EnhancedScreen
 
 ##############################################################################
 # Local imports.
-from ..commands import MoveDown, MoveLeft, MoveRight, MoveUp, ZoomIn, ZoomOut
+from ..commands import (
+    MoveDown,
+    MoveDownSlowly,
+    MoveLeft,
+    MoveLeftSlowly,
+    MoveRight,
+    MoveRightSlowly,
+    MoveUp,
+    MoveUpSlowly,
+    ZoomIn,
+    ZoomOut,
+)
 from ..mandelbrot import Mandelbrot
 
 
@@ -41,6 +52,10 @@ class Main(EnhancedScreen[None]):
         MoveDown,
         MoveLeft,
         MoveRight,
+        MoveUpSlowly,
+        MoveDownSlowly,
+        MoveLeftSlowly,
+        MoveRightSlowly,
     )
 
     BINDINGS = Command.bindings(*COMMAND_MESSAGES)
@@ -91,9 +106,17 @@ class Main(EnhancedScreen[None]):
         plot = self.query_one(Mandelbrot)
         plot.y_position += ((plot.height / plot.zoom) / plot.height) * amount
 
+    def action_move_up_slowly_command(self) -> None:
+        """Move up."""
+        self._move_y(-1)
+
     def action_move_up_command(self) -> None:
         """Move up."""
         self._move_y(-10)
+
+    def action_move_down_slowly_command(self) -> None:
+        """Move down."""
+        self._move_y(1)
 
     def action_move_down_command(self) -> None:
         """Move down."""
@@ -102,6 +125,14 @@ class Main(EnhancedScreen[None]):
     def action_move_left_command(self) -> None:
         """Move left."""
         self._move_x(-10)
+
+    def action_move_left_slowly_command(self) -> None:
+        """Move left."""
+        self._move_x(-1)
+
+    def action_move_right_slowly_command(self) -> None:
+        """Move right."""
+        self._move_x(1)
 
     def action_move_right_command(self) -> None:
         """Move right."""
