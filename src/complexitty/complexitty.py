@@ -9,8 +9,9 @@ from textual_enhanced.app import EnhancedApp
 from . import __version__
 from .screens import Main
 
+
 ##############################################################################
-class Complexityy(EnhancedApp[None]):
+class Complexitty(EnhancedApp[None]):
     """The application class."""
 
     HELP_TITLE = f"Complexitty {__version__}"
@@ -46,5 +47,6 @@ class Complexityy(EnhancedApp[None]):
             The default screen.
         """
         return Main()
+
 
 ### complexitty.py ends here

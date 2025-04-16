@@ -2,12 +2,14 @@
 
 ##############################################################################
 # Local imports.
-from .complexitty import Complexityy
+from .complexitty import Complexitty
+
 
 ##############################################################################
 def main() -> None:
     """Main entry point."""
-    Complexityy().run()
+    Complexitty().run()
+
 
 ##############################################################################
 if __name__ == "__main__":
