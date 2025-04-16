@@ -58,7 +58,7 @@ class Main(EnhancedScreen[None]):
         plot = self.query_one(Mandelbrot)
         plot.border_title = (
             f"X: {message.mandelbrot.x_position:.10f} | Y: {message.mandelbrot.y_position:.10f} "
-            f"| Zoom: {message.mandelbrot.zoom}"
+            f"| Zoom: {message.mandelbrot.zoom:.4f}"
         )
         plot.border_subtitle = (
             f"{message.mandelbrot.multibrot:0.2f} multibrot | "
