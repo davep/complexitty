@@ -7,15 +7,12 @@ from __future__ import annotations
 ##############################################################################
 # Python imports.
 from dataclasses import dataclass
-from math import ceil
 from time import monotonic
 
 ##############################################################################
 # Textual imports.
 from textual import on
-from textual.color import Color
 from textual.events import Mount, Resize
-from textual.geometry import Size
 from textual.message import Message
 from textual.reactive import var
 
