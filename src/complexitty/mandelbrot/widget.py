@@ -118,5 +118,28 @@ class Mandelbrot(Canvas):
             self.post_message(self.Plotted(self, monotonic() - start))
         return self
 
+    def _validate_zoom(self, zoom: int) -> int:
+        """Ensure the zoom doesn't fall to 0.
+
+        Args:
+            zoom: The requested zoom level.
+
+        Returns:
+            A safe zoom level.
+        """
+        return max(zoom, 1)
+
+    def _watch_zoom(self) -> None:
+        """React to the zoom level changing."""
+        self.plot()
+
+    def _watch_x_position(self) -> None:
+        """React to the X position changing."""
+        self.plot()
+
+    def _watch_y_position(self) -> None:
+        """React to the Y position changing."""
+        self.plot()
+
 
 ### widget.py ends here

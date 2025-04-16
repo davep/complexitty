@@ -13,6 +13,7 @@ from textual_enhanced.screen import EnhancedScreen
 
 ##############################################################################
 # Local imports.
+from ..commands import MoveDown, MoveLeft, MoveRight, MoveUp, ZoomIn, ZoomOut
 from ..mandelbrot import Mandelbrot
 
 
@@ -35,6 +36,12 @@ class Main(EnhancedScreen[None]):
         ChangeTheme,
         Quit,
         # Everything else.
+        ZoomIn,
+        ZoomOut,
+        MoveUp,
+        MoveDown,
+        MoveLeft,
+        MoveRight,
     )
 
     BINDINGS = Command.bindings(*COMMAND_MESSAGES)
@@ -58,6 +65,30 @@ class Main(EnhancedScreen[None]):
             f"{message.mandelbrot.max_iteration:0.2f} iterations | "
             f"{message.elapsed:0.4f} seconds"
         )
+
+    def action_zoom_in_command(self) -> None:
+        """Zoom in."""
+        self.query_one(Mandelbrot).zoom *= 1.2
+
+    def action_zoom_out_command(self) -> None:
+        """Zoom on."""
+        self.query_one(Mandelbrot).zoom *= 0.8
+
+    def action_move_up_command(self) -> None:
+        """Move up."""
+        self.query_one(Mandelbrot).y_position -= 0.1
+
+    def action_move_down_command(self) -> None:
+        """Move down."""
+        self.query_one(Mandelbrot).y_position += 0.1
+
+    def action_move_left_command(self) -> None:
+        """Move left."""
+        self.query_one(Mandelbrot).x_position -= 0.1
+
+    def action_move_right_command(self) -> None:
+        """Move right."""
+        self.query_one(Mandelbrot).x_position += 0.1
 
 
 ### main.py ends here
