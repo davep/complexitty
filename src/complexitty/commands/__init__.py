@@ -14,10 +14,20 @@ from .navigation import (
     ZoomIn,
     ZoomOut,
 )
+from .plotting import (
+    DecreaseMaximumIteration,
+    GreatlyDecreaseMaximumIteration,
+    GreatlyIncreaseMaximumIteration,
+    IncreaseMaximumIteration,
+)
 
 ##############################################################################
 # Exports.
 __all__ = [
+    "GreatlyDecreaseMaximumIteration",
+    "GreatlyIncreaseMaximumIteration",
+    "DecreaseMaximumIteration",
+    "IncreaseMaximumIteration",
     "MoveDown",
     "MoveDownSlowly",
     "MoveLeft",

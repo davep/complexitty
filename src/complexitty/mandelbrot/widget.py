@@ -132,5 +132,20 @@ class Mandelbrot(Canvas):
         """React to the Y position changing."""
         self.plot()
 
+    def _validate_max_iteration(self, max_iteration: int) -> int:
+        """Ensure the maximum iteration coutn doesn't fall below 10.
+
+        Args:
+            max_iteration: The requested maximum iteration.
+
+        Returns:
+            A safe maximum iteration.
+        """
+        return max(max_iteration, 10)
+
+    def _watch_max_iteration(self) -> None:
+        """React to the maximum iteration count changing."""
+        self.plot()
+
 
 ### widget.py ends here

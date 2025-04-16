@@ -14,6 +14,10 @@ from textual_enhanced.screen import EnhancedScreen
 ##############################################################################
 # Local imports.
 from ..commands import (
+    DecreaseMaximumIteration,
+    GreatlyDecreaseMaximumIteration,
+    GreatlyIncreaseMaximumIteration,
+    IncreaseMaximumIteration,
     MoveDown,
     MoveDownSlowly,
     MoveLeft,
@@ -48,6 +52,10 @@ class Main(EnhancedScreen[None]):
         # Everything else.
         ZoomIn,
         ZoomOut,
+        GreatlyDecreaseMaximumIteration,
+        GreatlyIncreaseMaximumIteration,
+        DecreaseMaximumIteration,
+        IncreaseMaximumIteration,
         MoveUp,
         MoveDown,
         MoveLeft,
@@ -137,6 +145,22 @@ class Main(EnhancedScreen[None]):
     def action_move_right_command(self) -> None:
         """Move right."""
         self._move_x(10)
+
+    def action_increase_maximum_iteration_command(self) -> None:
+        """Increase the maximum iteration."""
+        self.query_one(Mandelbrot).max_iteration += 10
+
+    def action_decrease_maximum_iteration_command(self) -> None:
+        """Decrease the maximum iteration."""
+        self.query_one(Mandelbrot).max_iteration -= 10
+
+    def action_greatly_increase_maximum_iteration_command(self) -> None:
+        """Increase the maximum iteration."""
+        self.query_one(Mandelbrot).max_iteration += 100
+
+    def action_greatly_decrease_maximum_iteration_command(self) -> None:
+        """Decrease the maximum iteration."""
+        self.query_one(Mandelbrot).max_iteration -= 100
 
 
 ### main.py ends here
