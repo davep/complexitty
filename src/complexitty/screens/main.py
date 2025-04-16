@@ -25,7 +25,6 @@ class Main(EnhancedScreen[None]):
     Mandelbrot {
         background: $panel;
         border: round $border;
-        border-title-align: left;
     }
     """
 
