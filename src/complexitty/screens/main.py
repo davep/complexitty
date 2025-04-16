@@ -74,21 +74,39 @@ class Main(EnhancedScreen[None]):
         """Zoom on."""
         self.query_one(Mandelbrot).zoom *= 0.8
 
+    def _move_x(self, amount: int) -> None:
+        """Move the plot in the X direction.
+
+        Args:
+            amount: The amount to move.
+        """
+        plot = self.query_one(Mandelbrot)
+        plot.x_position += ((plot.width / plot.zoom) / plot.width) * amount
+
+    def _move_y(self, amount: int) -> None:
+        """Move the plot in the Y direction.
+
+        Args:
+            amount: The amount to move.
+        """
+        plot = self.query_one(Mandelbrot)
+        plot.y_position += ((plot.height / plot.zoom) / plot.height) * amount
+
     def action_move_up_command(self) -> None:
         """Move up."""
-        self.query_one(Mandelbrot).y_position -= 0.1
+        self._move_y(-10)
 
     def action_move_down_command(self) -> None:
         """Move down."""
-        self.query_one(Mandelbrot).y_position += 0.1
+        self._move_y(10)
 
     def action_move_left_command(self) -> None:
         """Move left."""
-        self.query_one(Mandelbrot).x_position -= 0.1
+        self._move_x(-10)
 
     def action_move_right_command(self) -> None:
         """Move right."""
-        self.query_one(Mandelbrot).x_position += 0.1
+        self._move_x(10)
 
 
 ### main.py ends here
