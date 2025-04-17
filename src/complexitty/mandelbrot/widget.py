@@ -31,7 +31,7 @@ from .colouring import ColourMap, default_map
 
 
 ##############################################################################
-class Mandelbrot(Canvas):
+class Mandelbrot(Canvas, can_focus=False):
     """A Mandelbrot set plotting widget."""
 
     DEFAULT_CSS = """
