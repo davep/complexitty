@@ -26,7 +26,9 @@ from ..commands import (
     MoveUp,
     MoveUpSlowly,
     ZoomIn,
+    ZoomInFaster,
     ZoomOut,
+    ZoomOutFaster,
 )
 
 
@@ -56,7 +58,9 @@ class MainCommands(CommandsProvider):
         yield MoveUpSlowly()
         yield Quit()
         yield ZoomIn()
+        yield ZoomInFaster()
         yield ZoomOut()
+        yield ZoomOutFaster()
 
 
 ### main.py ends here

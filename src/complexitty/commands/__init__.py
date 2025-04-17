@@ -12,7 +12,9 @@ from .navigation import (
     MoveUp,
     MoveUpSlowly,
     ZoomIn,
+    ZoomInFaster,
     ZoomOut,
+    ZoomOutFaster,
 )
 from .plotting import (
     DecreaseMaximumIteration,
@@ -37,7 +39,9 @@ __all__ = [
     "MoveUp",
     "MoveUpSlowly",
     "ZoomIn",
+    "ZoomInFaster",
     "ZoomOut",
+    "ZoomOutFaster",
 ]
 
 ### __init__.py ends here

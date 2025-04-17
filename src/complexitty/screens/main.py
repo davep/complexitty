@@ -27,7 +27,9 @@ from ..commands import (
     MoveUp,
     MoveUpSlowly,
     ZoomIn,
+    ZoomInFaster,
     ZoomOut,
+    ZoomOutFaster,
 )
 from ..mandelbrot import Mandelbrot
 from ..providers import MainCommands
@@ -60,7 +62,9 @@ class Main(EnhancedScreen[None]):
         MoveLeftSlowly,
         MoveRightSlowly,
         ZoomIn,
+        ZoomInFaster,
         ZoomOut,
+        ZoomOutFaster,
         GreatlyDecreaseMaximumIteration,
         GreatlyIncreaseMaximumIteration,
         DecreaseMaximumIteration,
