@@ -51,12 +51,6 @@ class Main(EnhancedScreen[None]):
         ChangeTheme,
         Quit,
         # Everything else.
-        ZoomIn,
-        ZoomOut,
-        GreatlyDecreaseMaximumIteration,
-        GreatlyIncreaseMaximumIteration,
-        DecreaseMaximumIteration,
-        IncreaseMaximumIteration,
         MoveUp,
         MoveDown,
         MoveLeft,
@@ -65,6 +59,12 @@ class Main(EnhancedScreen[None]):
         MoveDownSlowly,
         MoveLeftSlowly,
         MoveRightSlowly,
+        ZoomIn,
+        ZoomOut,
+        GreatlyDecreaseMaximumIteration,
+        GreatlyIncreaseMaximumIteration,
+        DecreaseMaximumIteration,
+        IncreaseMaximumIteration,
     )
 
     BINDINGS = Command.bindings(*COMMAND_MESSAGES)

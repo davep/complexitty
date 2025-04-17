@@ -11,6 +11,8 @@ class IncreaseMaximumIteration(Command):
 
     BINDING_KEY = "."
     ACTION = "iterate(10)"
+    SHOW_IN_FOOTER = True
+    FOOTER_TEXT = "Itr+"
 
 
 ##############################################################################
@@ -19,6 +21,8 @@ class DecreaseMaximumIteration(Command):
 
     BINDING_KEY = "comma"
     ACTION = "iterate(-10)"
+    SHOW_IN_FOOTER = True
+    FOOTER_TEXT = "Itr-"
 
 
 ##############################################################################

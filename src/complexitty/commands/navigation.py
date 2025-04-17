@@ -11,6 +11,8 @@ class ZoomIn(Command):
 
     BINDING_KEY = "pageup"
     ACTION = "zoom(1.2)"
+    SHOW_IN_FOOTER = True
+    FOOTER_TEXT = "In"
 
 
 ##############################################################################
@@ -19,6 +21,8 @@ class ZoomOut(Command):
 
     BINDING_KEY = "pagedown"
     ACTION = "zoom(0.8)"
+    SHOW_IN_FOOTER = True
+    FOOTER_TEXT = "Out"
 
 
 ##############################################################################
@@ -27,6 +31,8 @@ class MoveUp(Command):
 
     BINDING_KEY = "up"
     ACTION = "move_y(-10)"
+    SHOW_IN_FOOTER = True
+    FOOTER_TEXT = "Up"
 
 
 ##############################################################################
@@ -43,6 +49,8 @@ class MoveDown(Command):
 
     BINDING_KEY = "down"
     ACTION = "move_y(10)"
+    SHOW_IN_FOOTER = True
+    FOOTER_TEXT = "Down"
 
 
 ##############################################################################
@@ -59,6 +67,8 @@ class MoveLeft(Command):
 
     BINDING_KEY = "left"
     ACTION = "move_x(-10)"
+    SHOW_IN_FOOTER = True
+    FOOTER_TEXT = "Left"
 
 
 ##############################################################################
@@ -75,6 +85,8 @@ class MoveRight(Command):
 
     BINDING_KEY = "right"
     ACTION = "move_x(10)"
+    SHOW_IN_FOOTER = True
+    FOOTER_TEXT = "Right"
 
 
 ##############################################################################
