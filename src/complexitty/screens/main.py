@@ -88,15 +88,11 @@ class Main(EnhancedScreen[None]):
             f"{message.elapsed:0.4f} seconds"
         )
 
-    def action_zoom_in_command(self) -> None:
-        """Zoom in."""
-        self.query_one(Mandelbrot).zoom *= 1.2
+    def action_zoom(self, factor: float) -> None:
+        """Zoom."""
+        self.query_one(Mandelbrot).zoom *= factor
 
-    def action_zoom_out_command(self) -> None:
-        """Zoom on."""
-        self.query_one(Mandelbrot).zoom *= 0.8
-
-    def _move_x(self, amount: int) -> None:
+    def action_move_x(self, amount: int) -> None:
         """Move the plot in the X direction.
 
         Args:
@@ -105,7 +101,7 @@ class Main(EnhancedScreen[None]):
         plot = self.query_one(Mandelbrot)
         plot.x_position += ((plot.width / plot.zoom) / plot.width) * amount
 
-    def _move_y(self, amount: int) -> None:
+    def action_move_y(self, amount: int) -> None:
         """Move the plot in the Y direction.
 
         Args:
@@ -114,53 +110,9 @@ class Main(EnhancedScreen[None]):
         plot = self.query_one(Mandelbrot)
         plot.y_position += ((plot.height / plot.zoom) / plot.height) * amount
 
-    def action_move_up_slowly_command(self) -> None:
-        """Move up."""
-        self._move_y(-1)
-
-    def action_move_up_command(self) -> None:
-        """Move up."""
-        self._move_y(-10)
-
-    def action_move_down_slowly_command(self) -> None:
-        """Move down."""
-        self._move_y(1)
-
-    def action_move_down_command(self) -> None:
-        """Move down."""
-        self._move_y(10)
-
-    def action_move_left_command(self) -> None:
-        """Move left."""
-        self._move_x(-10)
-
-    def action_move_left_slowly_command(self) -> None:
-        """Move left."""
-        self._move_x(-1)
-
-    def action_move_right_slowly_command(self) -> None:
-        """Move right."""
-        self._move_x(1)
-
-    def action_move_right_command(self) -> None:
-        """Move right."""
-        self._move_x(10)
-
-    def action_increase_maximum_iteration_command(self) -> None:
-        """Increase the maximum iteration."""
-        self.query_one(Mandelbrot).max_iteration += 10
-
-    def action_decrease_maximum_iteration_command(self) -> None:
-        """Decrease the maximum iteration."""
-        self.query_one(Mandelbrot).max_iteration -= 10
-
-    def action_greatly_increase_maximum_iteration_command(self) -> None:
-        """Increase the maximum iteration."""
-        self.query_one(Mandelbrot).max_iteration += 100
-
-    def action_greatly_decrease_maximum_iteration_command(self) -> None:
-        """Decrease the maximum iteration."""
-        self.query_one(Mandelbrot).max_iteration -= 100
+    def action_iterate(self, change: int) -> None:
+        """Change the maximum iteration."""
+        self.query_one(Mandelbrot).max_iteration += change
 
 
 ### main.py ends here
