@@ -30,6 +30,7 @@ from ..commands import (
     ZoomOut,
 )
 from ..mandelbrot import Mandelbrot
+from ..providers import MainCommands
 
 
 ##############################################################################
@@ -67,6 +68,7 @@ class Main(EnhancedScreen[None]):
     )
 
     BINDINGS = Command.bindings(*COMMAND_MESSAGES)
+    COMMANDS = {MainCommands}
 
     def compose(self) -> ComposeResult:
         """Compose the content of the main screen."""
