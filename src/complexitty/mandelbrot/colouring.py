@@ -65,9 +65,28 @@ def blue_brown_map(value: int, _: int) -> Color:
 
 
 ##############################################################################
+REDS = [Color(n * 16, 0, 0) for n in range(16)]
+
+
+##############################################################################
+@lru_cache()
+def shades_of_red(value: int, _: int) -> Color:
+    """Calculate a colour for an escape value.
+
+    Args:
+        value: An escape value from a Mandelbrot set.
+
+    Returns:
+        The colour to plot the point with.
+    """
+    return REDS[value % 16]
+
+
+##############################################################################
 GREENS = [Color(0, n * 16, 0) for n in range(16)]
 
 
+##############################################################################
 @lru_cache()
 def shades_of_green(value: int, _: int) -> Color:
     """Calculate a colour for an escape value.
@@ -79,6 +98,24 @@ def shades_of_green(value: int, _: int) -> Color:
         The colour to plot the point with.
     """
     return GREENS[value % 16]
+
+
+##############################################################################
+BLUES = [Color(0, 0, n * 16) for n in range(16)]
+
+
+##############################################################################
+@lru_cache()
+def shades_of_blue(value: int, _: int) -> Color:
+    """Calculate a colour for an escape value.
+
+    Args:
+        value: An escape value from a Mandelbrot set.
+
+    Returns:
+        The colour to plot the point with.
+    """
+    return BLUES[value % 16]
 
 
 ### colouring.py ends here

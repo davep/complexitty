@@ -2,6 +2,13 @@
 
 ##############################################################################
 # Local imports.
+from .colouring import (
+    SetColourToBluesAndBrowns,
+    SetColourToDefault,
+    SetColourToShadesOfBlue,
+    SetColourToShadesOfGreen,
+    SetColourToShadesOfRed,
+)
 from .navigation import (
     MoveDown,
     MoveDownSlowly,
@@ -26,9 +33,9 @@ from .plotting import (
 ##############################################################################
 # Exports.
 __all__ = [
+    "DecreaseMaximumIteration",
     "GreatlyDecreaseMaximumIteration",
     "GreatlyIncreaseMaximumIteration",
-    "DecreaseMaximumIteration",
     "IncreaseMaximumIteration",
     "MoveDown",
     "MoveDownSlowly",
@@ -38,6 +45,11 @@ __all__ = [
     "MoveRightSlowly",
     "MoveUp",
     "MoveUpSlowly",
+    "SetColourToBluesAndBrowns",
+    "SetColourToDefault",
+    "SetColourToShadesOfBlue",
+    "SetColourToShadesOfGreen",
+    "SetColourToShadesOfRed",
     "ZoomIn",
     "ZoomInFaster",
     "ZoomOut",

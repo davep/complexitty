@@ -25,6 +25,11 @@ from ..commands import (
     MoveRightSlowly,
     MoveUp,
     MoveUpSlowly,
+    SetColourToBluesAndBrowns,
+    SetColourToDefault,
+    SetColourToShadesOfBlue,
+    SetColourToShadesOfGreen,
+    SetColourToShadesOfRed,
     ZoomIn,
     ZoomInFaster,
     ZoomOut,
@@ -57,6 +62,11 @@ class MainCommands(CommandsProvider):
         yield MoveUp()
         yield MoveUpSlowly()
         yield Quit()
+        yield SetColourToBluesAndBrowns()
+        yield SetColourToDefault()
+        yield SetColourToShadesOfBlue()
+        yield SetColourToShadesOfGreen()
+        yield SetColourToShadesOfRed()
         yield ZoomIn()
         yield ZoomInFaster()
         yield ZoomOut()

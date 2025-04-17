@@ -26,12 +26,17 @@ from ..commands import (
     MoveRightSlowly,
     MoveUp,
     MoveUpSlowly,
+    SetColourToBluesAndBrowns,
+    SetColourToDefault,
+    SetColourToShadesOfBlue,
+    SetColourToShadesOfGreen,
+    SetColourToShadesOfRed,
     ZoomIn,
     ZoomInFaster,
     ZoomOut,
     ZoomOutFaster,
 )
-from ..mandelbrot import Mandelbrot
+from ..mandelbrot import Mandelbrot, colouring
 from ..providers import MainCommands
 
 
@@ -69,6 +74,11 @@ class Main(EnhancedScreen[None]):
         GreatlyIncreaseMaximumIteration,
         DecreaseMaximumIteration,
         IncreaseMaximumIteration,
+        SetColourToBluesAndBrowns,
+        SetColourToDefault,
+        SetColourToShadesOfBlue,
+        SetColourToShadesOfGreen,
+        SetColourToShadesOfRed,
     )
 
     BINDINGS = Command.bindings(*COMMAND_MESSAGES)
@@ -119,6 +129,10 @@ class Main(EnhancedScreen[None]):
     def action_iterate(self, change: int) -> None:
         """Change the maximum iteration."""
         self.query_one(Mandelbrot).max_iteration += change
+
+    def action_set_colour(self, colour_map: str) -> None:
+        """Set the colour map for the plot."""
+        self.query_one(Mandelbrot).colour_map = getattr(colouring, colour_map)
 
 
 ### main.py ends here

@@ -147,5 +147,9 @@ class Mandelbrot(Canvas, can_focus=False):
         """React to the maximum iteration count changing."""
         self.plot()
 
+    def _watch_colour_map(self) -> None:
+        """React to the colour map being changed."""
+        self.plot()
+
 
 ### widget.py ends here
