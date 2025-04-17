@@ -16,6 +16,7 @@ from textual_enhanced.screen import EnhancedScreen
 from ..commands import (
     DecreaseMaximumIteration,
     DecreaseMultibrot,
+    GoMiddle,
     GreatlyDecreaseMaximumIteration,
     GreatlyIncreaseMaximumIteration,
     IncreaseMaximumIteration,
@@ -33,6 +34,7 @@ from ..commands import (
     SetColourToShadesOfBlue,
     SetColourToShadesOfGreen,
     SetColourToShadesOfRed,
+    ZeroZero,
     ZoomIn,
     ZoomInFaster,
     ZoomOut,
@@ -68,10 +70,12 @@ class Main(EnhancedScreen[None]):
         MoveDownSlowly,
         MoveLeftSlowly,
         MoveRightSlowly,
+        ZeroZero,
         ZoomIn,
         ZoomInFaster,
         ZoomOut,
         ZoomOutFaster,
+        GoMiddle,
         GreatlyDecreaseMaximumIteration,
         GreatlyIncreaseMaximumIteration,
         DecreaseMaximumIteration,
@@ -141,6 +145,11 @@ class Main(EnhancedScreen[None]):
     def action_multibrot(self, change: int) -> None:
         """Change the 'multibrot' value."""
         self.query_one(Mandelbrot).multibrot += change
+
+    def action_goto(self, x: int, y: int) -> None:
+        """Go to a specific location."""
+        self.query_one(Mandelbrot).x_position = x
+        self.query_one(Mandelbrot).y_position = y
 
 
 ### main.py ends here

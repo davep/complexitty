@@ -113,4 +113,20 @@ class MoveRightSlowly(Command):
     ACTION = "move_x(1)"
 
 
+##############################################################################
+class GoMiddle(Command):
+    """Centre the display on the 'middle' of the Mandelbrot set"""
+
+    BINDING_KEY = "home"
+    ACTION = "goto(-0.5,0)"
+
+
+##############################################################################
+class ZeroZero(Command):
+    """Centre the display on 0,0"""
+
+    BINDING_KEY = "end"
+    ACTION = "goto(0,0)"
+
+
 ### navigation.py ends here

@@ -15,6 +15,7 @@ from textual_enhanced.commands import (
 from ..commands import (
     DecreaseMaximumIteration,
     DecreaseMultibrot,
+    GoMiddle,
     GreatlyDecreaseMaximumIteration,
     GreatlyIncreaseMaximumIteration,
     IncreaseMaximumIteration,
@@ -32,6 +33,7 @@ from ..commands import (
     SetColourToShadesOfBlue,
     SetColourToShadesOfGreen,
     SetColourToShadesOfRed,
+    ZeroZero,
     ZoomIn,
     ZoomInFaster,
     ZoomOut,
@@ -57,6 +59,7 @@ class MainCommands(CommandsProvider):
         yield Help()
         yield IncreaseMaximumIteration()
         yield IncreaseMultibrot()
+        yield GoMiddle()
         yield MoveDown()
         yield MoveDownSlowly()
         yield MoveLeft()
@@ -71,6 +74,7 @@ class MainCommands(CommandsProvider):
         yield SetColourToShadesOfBlue()
         yield SetColourToShadesOfGreen()
         yield SetColourToShadesOfRed()
+        yield ZeroZero()
         yield ZoomIn()
         yield ZoomInFaster()
         yield ZoomOut()

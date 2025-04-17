@@ -10,6 +10,7 @@ from .colouring import (
     SetColourToShadesOfRed,
 )
 from .navigation import (
+    GoMiddle,
     MoveDown,
     MoveDownSlowly,
     MoveLeft,
@@ -18,6 +19,7 @@ from .navigation import (
     MoveRightSlowly,
     MoveUp,
     MoveUpSlowly,
+    ZeroZero,
     ZoomIn,
     ZoomInFaster,
     ZoomOut,
@@ -39,6 +41,7 @@ __all__ = [
     "DecreaseMultibrot",
     "GreatlyDecreaseMaximumIteration",
     "GreatlyIncreaseMaximumIteration",
+    "GoMiddle",
     "IncreaseMaximumIteration",
     "IncreaseMultibrot",
     "MoveDown",
@@ -54,6 +57,7 @@ __all__ = [
     "SetColourToShadesOfBlue",
     "SetColourToShadesOfGreen",
     "SetColourToShadesOfRed",
+    "ZeroZero",
     "ZoomIn",
     "ZoomInFaster",
     "ZoomOut",
