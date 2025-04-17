@@ -32,7 +32,7 @@ textual==3.1.0
     # via textual-enhanced
 textual-canvas==0.4.0
     # via complexitty
-textual-enhanced==0.11.0
+textual-enhanced==0.12.0
     # via complexitty
 typing-extensions==4.13.2
     # via textual

@@ -86,7 +86,7 @@ textual==3.1.0
 textual-canvas==0.4.0
     # via complexitty
 textual-dev==1.7.0
-textual-enhanced==0.11.0
+textual-enhanced==0.12.0
     # via complexitty
 textual-serve==1.1.2
     # via textual-dev
@@ -99,5 +99,5 @@ uc-micro-py==1.0.3
     # via linkify-it-py
 virtualenv==20.30.0
     # via pre-commit
-yarl==1.19.0
+yarl==1.20.0
     # via aiohttp
