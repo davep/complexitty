@@ -15,9 +15,11 @@ from textual_enhanced.screen import EnhancedScreen
 # Local imports.
 from ..commands import (
     DecreaseMaximumIteration,
+    DecreaseMultibrot,
     GreatlyDecreaseMaximumIteration,
     GreatlyIncreaseMaximumIteration,
     IncreaseMaximumIteration,
+    IncreaseMultibrot,
     MoveDown,
     MoveDownSlowly,
     MoveLeft,
@@ -79,6 +81,8 @@ class Main(EnhancedScreen[None]):
         SetColourToShadesOfBlue,
         SetColourToShadesOfGreen,
         SetColourToShadesOfRed,
+        IncreaseMultibrot,
+        DecreaseMultibrot,
     )
 
     BINDINGS = Command.bindings(*COMMAND_MESSAGES)
@@ -133,6 +137,10 @@ class Main(EnhancedScreen[None]):
     def action_set_colour(self, colour_map: str) -> None:
         """Set the colour map for the plot."""
         self.query_one(Mandelbrot).colour_map = getattr(colouring, colour_map)
+
+    def action_multibrot(self, change: int) -> None:
+        """Change the 'multibrot' value."""
+        self.query_one(Mandelbrot).multibrot += change
 
 
 ### main.py ends here

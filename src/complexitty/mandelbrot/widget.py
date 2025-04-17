@@ -151,5 +151,20 @@ class Mandelbrot(Canvas, can_focus=False):
         """React to the colour map being changed."""
         self.plot()
 
+    def _validate_multibrot(self, multibrot: int) -> int:
+        """Ensure the multibrot doesn't fall below 1.
+
+        Args:
+            multibrot: The requested multibrot.
+
+        Returns:
+            A safe multibrot.
+        """
+        return max(multibrot, 1)
+
+    def _watch_multibrot(self) -> None:
+        """React to the 'multibrot' being changed."""
+        self.plot()
+
 
 ### widget.py ends here

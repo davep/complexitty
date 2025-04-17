@@ -14,9 +14,11 @@ from textual_enhanced.commands import (
 # Local imports.
 from ..commands import (
     DecreaseMaximumIteration,
+    DecreaseMultibrot,
     GreatlyDecreaseMaximumIteration,
     GreatlyIncreaseMaximumIteration,
     IncreaseMaximumIteration,
+    IncreaseMultibrot,
     MoveDown,
     MoveDownSlowly,
     MoveLeft,
@@ -49,10 +51,12 @@ class MainCommands(CommandsProvider):
         """
         yield ChangeTheme()
         yield DecreaseMaximumIteration()
+        yield DecreaseMultibrot()
         yield GreatlyDecreaseMaximumIteration()
         yield GreatlyIncreaseMaximumIteration()
         yield Help()
         yield IncreaseMaximumIteration()
+        yield IncreaseMultibrot()
         yield MoveDown()
         yield MoveDownSlowly()
         yield MoveLeft()

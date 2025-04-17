@@ -25,18 +25,22 @@ from .navigation import (
 )
 from .plotting import (
     DecreaseMaximumIteration,
+    DecreaseMultibrot,
     GreatlyDecreaseMaximumIteration,
     GreatlyIncreaseMaximumIteration,
     IncreaseMaximumIteration,
+    IncreaseMultibrot,
 )
 
 ##############################################################################
 # Exports.
 __all__ = [
     "DecreaseMaximumIteration",
+    "DecreaseMultibrot",
     "GreatlyDecreaseMaximumIteration",
     "GreatlyIncreaseMaximumIteration",
     "IncreaseMaximumIteration",
+    "IncreaseMultibrot",
     "MoveDown",
     "MoveDownSlowly",
     "MoveLeft",

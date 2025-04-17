@@ -41,4 +41,20 @@ class GreatlyDecreaseMaximumIteration(Command):
     ACTION = "iterate(-100)"
 
 
+##############################################################################
+class IncreaseMultibrot(Command):
+    """Increase the 'multibrot' value"""
+
+    BINDING_KEY = "*"
+    ACTION = "multibrot(1)"
+
+
+##############################################################################
+class DecreaseMultibrot(Command):
+    """Decrease the 'multibrot' value"""
+
+    BINDING_KEY = "/"
+    ACTION = "multibrot(-1)"
+
+
 ### plotting.py ends here
