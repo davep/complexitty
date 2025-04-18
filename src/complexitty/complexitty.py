@@ -38,6 +38,7 @@ class Complexitty(EnhancedApp[None]):
     this program. If not, see <https://www.gnu.org/licenses/>.
     """
 
+    SUB_TITLE = f"v{__version__}"
     COMMANDS = set()
 
     def get_default_screen(self) -> Main:
