@@ -7,7 +7,6 @@ from textual_enhanced.commands import (
     CommandHits,
     CommandsProvider,
     Help,
-    Quit,
 )
 
 ##############################################################################
@@ -29,6 +28,7 @@ from ..commands import (
     MoveRightSlowly,
     MoveUp,
     MoveUpSlowly,
+    Quit,
     Reset,
     SetColourToBluesAndBrowns,
     SetColourToDefault,

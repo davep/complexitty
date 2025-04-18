@@ -9,6 +9,7 @@ from .colouring import (
     SetColourToShadesOfGreen,
     SetColourToShadesOfRed,
 )
+from .main import Quit
 from .navigation import (
     GoMiddle,
     GoTo,
@@ -55,6 +56,7 @@ __all__ = [
     "MoveRightSlowly",
     "MoveUp",
     "MoveUpSlowly",
+    "Quit",
     "Reset",
     "SetColourToBluesAndBrowns",
     "SetColourToDefault",

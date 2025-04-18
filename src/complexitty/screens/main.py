@@ -13,7 +13,7 @@ from textual.widgets import Footer, Header
 
 ##############################################################################
 # Textual enhanced imports.
-from textual_enhanced.commands import ChangeTheme, Command, Help, Quit
+from textual_enhanced.commands import ChangeTheme, Command, Help
 from textual_enhanced.dialogs import ModalInput
 from textual_enhanced.screen import EnhancedScreen
 
@@ -36,6 +36,7 @@ from ..commands import (
     MoveRightSlowly,
     MoveUp,
     MoveUpSlowly,
+    Quit,
     Reset,
     SetColourToBluesAndBrowns,
     SetColourToDefault,
