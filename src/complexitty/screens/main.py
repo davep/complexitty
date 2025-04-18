@@ -189,7 +189,9 @@ class Main(EnhancedScreen[None]):
         """Reset the plot to its default values."""
         self.query_one(Mandelbrot).reset()
 
-    _VALID_LOCATION: Final[Pattern[str]] = compile(r"(?P<x>[^, ]+)[, ] *(?P<y>[^, ]+)")
+    _VALID_LOCATION: Final[Pattern[str]] = compile(
+        r"(?P<x>[^, ]+) *[, ] *(?P<y>[^, ]+)"
+    )
     """Regular expression for helping split up a location input."""
 
     @work
