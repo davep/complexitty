@@ -133,7 +133,7 @@ class Mandelbrot(Canvas, can_focus=False):
         self.plot()
 
     def _validate_max_iteration(self, max_iteration: int) -> int:
-        """Ensure the maximum iteration coutn doesn't fall below 10.
+        """Ensure the maximum iteration count doesn't fall below 10.
 
         Args:
             max_iteration: The requested maximum iteration.

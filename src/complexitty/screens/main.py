@@ -100,21 +100,28 @@ class Main(EnhancedScreen[None]):
 
     @on(Mandelbrot.Plotted)
     def _update_situation(self, message: Mandelbrot.Plotted) -> None:
-        """Update the current situation after the latest plot."""
-        plot = self.query_one(Mandelbrot)
-        plot.border_title = (
+        """Update the current situation after the latest plot.
+
+        Args:
+            message: The message letting us know the plot finished.
+        """
+        message.mandelbrot.border_title = (
             f"X: {message.mandelbrot.x_position:.10f} | Y: {message.mandelbrot.y_position:.10f} "
             f"| Zoom: {message.mandelbrot.zoom:.4f}"
         )
-        plot.border_subtitle = (
+        message.mandelbrot.border_subtitle = (
             f"{message.mandelbrot.multibrot:0.2f} multibrot | "
             f"{message.mandelbrot.max_iteration:0.2f} iterations | "
             f"{message.elapsed:0.4f} seconds"
         )
 
-    def action_zoom(self, factor: float) -> None:
-        """Zoom."""
-        self.query_one(Mandelbrot).zoom *= factor
+    def action_zoom(self, change: float) -> None:
+        """Change the zoom value.
+
+        Args:
+            change: The amount to change the zoom by.
+        """
+        self.query_one(Mandelbrot).zoom *= change
 
     def action_move_x(self, amount: int) -> None:
         """Move the plot in the X direction.
@@ -135,19 +142,36 @@ class Main(EnhancedScreen[None]):
         plot.y_position += ((plot.height / plot.zoom) / plot.height) * amount
 
     def action_iterate(self, change: int) -> None:
-        """Change the maximum iteration."""
+        """Change the maximum iteration.
+
+        Args:
+            change: The change to make to the maximum iterations.
+        """
         self.query_one(Mandelbrot).max_iteration += change
 
     def action_set_colour(self, colour_map: str) -> None:
-        """Set the colour map for the plot."""
+        """Set the colour map for the plot.
+
+        Args:
+            colour_map: The name of the colour map to use.
+        """
         self.query_one(Mandelbrot).colour_map = getattr(colouring, colour_map)
 
     def action_multibrot(self, change: int) -> None:
-        """Change the 'multibrot' value."""
+        """Change the 'multibrot' value.
+
+        Args:
+            change: The change to make to the 'multibrot' value.
+        """
         self.query_one(Mandelbrot).multibrot += change
 
     def action_goto(self, x: int, y: int) -> None:
-        """Go to a specific location."""
+        """Go to a specific location.
+
+        Args:
+            x: The X location to go to.
+            y: The Y location to go to.
+        """
         self.query_one(Mandelbrot).x_position = x
         self.query_one(Mandelbrot).y_position = y
 
