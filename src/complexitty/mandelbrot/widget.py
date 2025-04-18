@@ -109,6 +109,20 @@ class Mandelbrot(Canvas, can_focus=False):
             self.post_message(self.Plotted(self, monotonic() - start))
         return self
 
+    def goto(self, x: int, y: int) -> Self:
+        """Move the centre of the plot to the given location.
+
+        Args:
+            x: The X location to move to.
+            y: The Y location to move to.
+
+        Returns:
+            Self.
+        """
+        self.set_reactive(Mandelbrot.x_position, x)
+        self.set_reactive(Mandelbrot.y_position, y)
+        return self.plot()
+
     def reset(self) -> None:
         """Reset the plot to its default state."""
         self.set_reactive(Mandelbrot.max_iteration, 80)

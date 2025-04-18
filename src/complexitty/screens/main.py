@@ -174,8 +174,7 @@ class Main(EnhancedScreen[None]):
             x: The X location to go to.
             y: The Y location to go to.
         """
-        self.query_one(Mandelbrot).x_position = x
-        self.query_one(Mandelbrot).y_position = y
+        self.query_one(Mandelbrot).goto(x, y)
 
     def action_reset_command(self) -> None:
         """Reset the plot to its default values."""
