@@ -123,15 +123,19 @@ class Mandelbrot(Canvas, can_focus=False):
         self.set_reactive(Mandelbrot.y_position, y)
         return self.plot()
 
-    def reset(self) -> None:
-        """Reset the plot to its default state."""
+    def reset(self) -> Self:
+        """Reset the plot to its default state.
+
+        Returns:
+            Self.
+        """
         self.set_reactive(Mandelbrot.max_iteration, 80)
         self.set_reactive(Mandelbrot.multibrot, 2)
         self.set_reactive(Mandelbrot.x_position, -0.5)
         self.set_reactive(Mandelbrot.y_position, 0)
         self.set_reactive(Mandelbrot.zoom, 50)
         self.set_reactive(Mandelbrot.colour_map, default_map)
-        self.plot()
+        return self.plot()
 
     def _validate_zoom(self, zoom: int) -> int:
         """Ensure the zoom doesn't fall to 0.
