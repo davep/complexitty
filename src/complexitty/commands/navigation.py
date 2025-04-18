@@ -133,7 +133,7 @@ class ZeroZero(Command):
 class Reset(Command):
     """Reset the plot to the default values"""
 
-    BINDING_KEY = "ctrl+r"
+    BINDING_KEY = "r"
 
 
 ### navigation.py ends here
