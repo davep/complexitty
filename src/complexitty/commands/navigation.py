@@ -129,4 +129,11 @@ class ZeroZero(Command):
     ACTION = "goto(0,0)"
 
 
+##############################################################################
+class Reset(Command):
+    """Reset the plot to the default values"""
+
+    BINDING_KEY = "ctrl+r"
+
+
 ### navigation.py ends here

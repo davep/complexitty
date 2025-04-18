@@ -28,6 +28,7 @@ from ..commands import (
     MoveRightSlowly,
     MoveUp,
     MoveUpSlowly,
+    Reset,
     SetColourToBluesAndBrowns,
     SetColourToDefault,
     SetColourToShadesOfBlue,
@@ -69,6 +70,7 @@ class MainCommands(CommandsProvider):
         yield MoveUp()
         yield MoveUpSlowly()
         yield Quit()
+        yield Reset()
         yield SetColourToBluesAndBrowns()
         yield SetColourToDefault()
         yield SetColourToShadesOfBlue()

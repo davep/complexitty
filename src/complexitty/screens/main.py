@@ -29,6 +29,7 @@ from ..commands import (
     MoveRightSlowly,
     MoveUp,
     MoveUpSlowly,
+    Reset,
     SetColourToBluesAndBrowns,
     SetColourToDefault,
     SetColourToShadesOfBlue,
@@ -80,6 +81,7 @@ class Main(EnhancedScreen[None]):
         GreatlyIncreaseMaximumIteration,
         DecreaseMaximumIteration,
         IncreaseMaximumIteration,
+        Reset,
         SetColourToBluesAndBrowns,
         SetColourToDefault,
         SetColourToShadesOfBlue,
@@ -174,6 +176,10 @@ class Main(EnhancedScreen[None]):
         """
         self.query_one(Mandelbrot).x_position = x
         self.query_one(Mandelbrot).y_position = y
+
+    def action_reset_command(self) -> None:
+        """Reset the plot to its default values."""
+        self.query_one(Mandelbrot).reset()
 
 
 ### main.py ends here
