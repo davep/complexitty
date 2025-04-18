@@ -109,7 +109,7 @@ class Mandelbrot(Canvas, can_focus=False):
             self.post_message(self.Plotted(self, monotonic() - start))
         return self
 
-    def goto(self, x: int, y: int) -> Self:
+    def goto(self, x: float, y: float) -> Self:
         """Move the centre of the plot to the given location.
 
         Args:
