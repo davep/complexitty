@@ -130,6 +130,13 @@ class ZeroZero(Command):
 
 
 ##############################################################################
+class GoTo(Command):
+    """Prompt for a location and go to it"""
+
+    BINDING_KEY = "g"
+
+
+##############################################################################
 class Reset(Command):
     """Reset the plot to the default values"""
 

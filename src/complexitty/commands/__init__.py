@@ -11,6 +11,7 @@ from .colouring import (
 )
 from .navigation import (
     GoMiddle,
+    GoTo,
     MoveDown,
     MoveDownSlowly,
     MoveLeft,
@@ -43,6 +44,7 @@ __all__ = [
     "GreatlyDecreaseMaximumIteration",
     "GreatlyIncreaseMaximumIteration",
     "GoMiddle",
+    "GoTo",
     "IncreaseMaximumIteration",
     "IncreaseMultibrot",
     "MoveDown",

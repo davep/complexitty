@@ -1,14 +1,20 @@
 """The main screen for the application."""
 
 ##############################################################################
+# Python imports.
+from re import Pattern, compile
+from typing import Final
+
+##############################################################################
 # Textual imports.
-from textual import on
+from textual import on, work
 from textual.app import ComposeResult
 from textual.widgets import Footer, Header
 
 ##############################################################################
 # Textual enhanced imports.
 from textual_enhanced.commands import ChangeTheme, Command, Help, Quit
+from textual_enhanced.dialogs import ModalInput
 from textual_enhanced.screen import EnhancedScreen
 
 ##############################################################################
@@ -17,6 +23,7 @@ from ..commands import (
     DecreaseMaximumIteration,
     DecreaseMultibrot,
     GoMiddle,
+    GoTo,
     GreatlyDecreaseMaximumIteration,
     GreatlyIncreaseMaximumIteration,
     IncreaseMaximumIteration,
@@ -77,6 +84,7 @@ class Main(EnhancedScreen[None]):
         ZoomOut,
         ZoomOutFaster,
         GoMiddle,
+        GoTo,
         GreatlyDecreaseMaximumIteration,
         GreatlyIncreaseMaximumIteration,
         DecreaseMaximumIteration,
@@ -180,6 +188,37 @@ class Main(EnhancedScreen[None]):
     def action_reset_command(self) -> None:
         """Reset the plot to its default values."""
         self.query_one(Mandelbrot).reset()
+
+    _VALID_LOCATION: Final[Pattern[str]] = compile(r"(?P<x>[^, ]+)[, ] *(?P<y>[^, ]+)")
+    """Regular expression for helping split up a location input."""
+
+    @work
+    async def action_go_to_command(self) -> None:
+        """Prompt for a location and go to it."""
+        if request := await self.app.push_screen_wait(ModalInput(placeholder="x, y")):
+            if parsed := self._VALID_LOCATION.match(request):
+                target: dict[str, float] = {}
+                for dimension in "xy":
+                    try:
+                        target[dimension] = float(parsed[dimension])
+                    except ValueError:
+                        self.notify(
+                            "Please give a numeric location for that dimension",
+                            title=f"Invalid {dimension} value",
+                            severity="error",
+                        )
+                if "x" in target and "y" in target:
+                    self.query_one(Mandelbrot).goto(
+                        float(parsed["x"]), float(parsed["y"])
+                    )
+            else:
+                self.notify(
+                    "Please provide both the [i]x[/] and [i]y[/] coordinates separated by a comma or space. For example:\n\n"
+                    "[i]0.1, 0.1[/]\n\nor:\n\n"
+                    "[i]0.1 0.1[/]",
+                    title="Invalid location input",
+                    severity="error",
+                )
 
 
 ### main.py ends here

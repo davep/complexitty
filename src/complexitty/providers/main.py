@@ -16,6 +16,7 @@ from ..commands import (
     DecreaseMaximumIteration,
     DecreaseMultibrot,
     GoMiddle,
+    GoTo,
     GreatlyDecreaseMaximumIteration,
     GreatlyIncreaseMaximumIteration,
     IncreaseMaximumIteration,
@@ -57,6 +58,7 @@ class MainCommands(CommandsProvider):
         yield DecreaseMultibrot()
         yield GreatlyDecreaseMaximumIteration()
         yield GreatlyIncreaseMaximumIteration()
+        yield GoTo()
         yield Help()
         yield IncreaseMaximumIteration()
         yield IncreaseMultibrot()
