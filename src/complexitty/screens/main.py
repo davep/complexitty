@@ -93,6 +93,7 @@ class Main(EnhancedScreen[None]):
 
     BINDINGS = Command.bindings(*COMMAND_MESSAGES)
     COMMANDS = {MainCommands}
+    HELP = "## Commands and keys"
 
     def compose(self) -> ComposeResult:
         """Compose the content of the main screen."""
