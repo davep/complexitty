@@ -1,12 +1,24 @@
 """Provides the application class."""
 
 ##############################################################################
+# Python imports.
+from argparse import Namespace
+
+##############################################################################
+# Textual imports.
+from textual.app import InvalidThemeError, ScreenStackError
+
+##############################################################################
 # Textual enhanced imports.
 from textual_enhanced.app import EnhancedApp
 
 ##############################################################################
 # Local imports.
 from . import __version__
+from .data import (
+    load_configuration,
+    update_configuration,
+)
 from .screens import Main
 
 
@@ -40,6 +52,31 @@ class Complexitty(EnhancedApp[None]):
 
     SUB_TITLE = f"v{__version__}"
     COMMANDS = set()
+
+    def __init__(self, arguments: Namespace) -> None:
+        """Initialise the application.
+
+        Args:
+            The command line arguments passed to the application.
+        """
+        self._arguments = arguments
+        """The command line arguments passed to the application."""
+        super().__init__()
+        configuration = load_configuration()
+        if configuration.theme is not None:
+            try:
+                self.theme = arguments.theme or configuration.theme
+            except InvalidThemeError:
+                pass
+        try:
+            self.update_keymap(configuration.bindings)
+        except ScreenStackError:  # https://github.com/Textualize/textual/issues/5742
+            pass
+
+    def watch_theme(self) -> None:
+        """Save the application's theme when it's changed."""
+        with update_configuration() as config:
+            config.theme = self.theme
 
     def get_default_screen(self) -> Main:
         """Get the default screen for the application.
