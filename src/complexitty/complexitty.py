@@ -16,7 +16,7 @@ class Complexitty(EnhancedApp[None]):
 
     HELP_TITLE = f"Complexitty {__version__}"
     HELP_ABOUT = """
-    `Complexitty` is a simple terminal-based Mandelbrot Set exploter; it was created
+    `Complexitty` is a simple terminal-based Mandelbrot Set explorer; it was created
     by and is maintained by [Dave Pearson](https://www.davep.org/); it is
     Free Software and can be [found on
     GitHub](https://github.com/davep/complexitty).
