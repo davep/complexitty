@@ -134,7 +134,9 @@ class Mandelbrot(Canvas, can_focus=False):
         self.set_reactive(Mandelbrot.x_position, -0.5)
         self.set_reactive(Mandelbrot.y_position, 0)
         self.set_reactive(Mandelbrot.zoom, 50)
-        self.set_reactive(Mandelbrot.colour_map, default_map)
+        # Setting an ignore in the following line. For some reason mypy
+        # can't deal with this; pyright is fine though.
+        self.set_reactive(Mandelbrot.colour_map, default_map)  # type:ignore
         return self.plot()
 
     def _validate_zoom(self, zoom: int) -> int:
