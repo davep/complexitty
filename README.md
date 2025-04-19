@@ -1,6 +1,6 @@
 # Complexitty
 
-[![Complexitty](.images/complexitty-social-banner.png)](https://complexitty.davep.dev/)
+[![Complexitty](https://raw.githubusercontent.com/davep/complexitty/refs/heads/main/.images/complexitty-social-banner.png)](https://complexitty.davep.dev/)
 
 ## Introduction
 
@@ -36,7 +36,7 @@ run the application using the `complexitty` command.
 The best way to get to know Complexitty is to read the help screen, once in the
 main application you can see this by pressing <kbd>F1</kbd>.
 
-![Complexitty help](.images/complexitty-help.png)
+![Complexitty help](https://raw.githubusercontent.com/davep/complexitty/refs/heads/main/.images/complexitty-help.png)
 
 For more information and details on configuring Complexitty, see [the online
 documentation](https://complexitty.davep.dev/).
