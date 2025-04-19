@@ -2,6 +2,14 @@
 
 [![Complexitty](https://raw.githubusercontent.com/davep/complexitty/refs/heads/main/.images/complexitty-social-banner.png)](https://complexitty.davep.dev/)
 
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/davep/complexitty/code-checks.yaml)](https://github.com/davep/complexitty/actions)
+[![GitHub commits since latest release](https://img.shields.io/github/commits-since/davep/complexitty/latest)](https://github.com/davep/complexitty/commits/main/)
+[![GitHub Issues or Pull Requests](https://img.shields.io/github/issues/davep/complexitty)](https://github.com/davep/complexitty/issues)
+[![GitHub Release Date](https://img.shields.io/github/release-date/davep/complexitty)](https://github.com/davep/complexitty/releases)
+[![PyPI - License](https://img.shields.io/pypi/l/complexitty)](https://github.com/davep/complexitty/blob/main/LICENSE)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/complexitty)](https://github.com/davep/complexitty/blob/main/pyproject.toml)
+[![PyPI - Version](https://img.shields.io/pypi/v/complexitty)](https://pypi.org/project/complexitty/)
+
 ## Introduction
 
 Complexitty is a simple terminal-based application that lets you explore the
