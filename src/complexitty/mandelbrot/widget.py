@@ -109,6 +109,44 @@ class Mandelbrot(Canvas, can_focus=False):
             self.post_message(self.Plotted(self, monotonic() - start))
         return self
 
+    def set(
+        self,
+        max_iteration: int | None = None,
+        multibrot: float | None = None,
+        x_position: float | None = None,
+        y_position: float | None = None,
+        zoom: float | None = None,
+        colour_map: ColourMap | None = None,
+    ) -> Self:
+        """Set one or more properties in one go.
+
+        Args:
+            max_iteration: The maximum iteration.
+            multibrot: The 'multibrot' value.
+            x_position: The X position of the middle of the plot.
+            y_position: The Y position of the middle of the plot.
+            zoom: The zoom value for the plot.
+            colour_map: The colour map to use for the plot.
+
+        Returns:
+            Self.
+        """
+        if max_iteration is not None:
+            self.set_reactive(Mandelbrot.max_iteration, max_iteration)
+        if multibrot is not None:
+            self.set_reactive(Mandelbrot.multibrot, multibrot)
+        if x_position is not None:
+            self.set_reactive(Mandelbrot.x_position, x_position)
+        if y_position is not None:
+            self.set_reactive(Mandelbrot.y_position, y_position)
+        if zoom is not None:
+            self.set_reactive(Mandelbrot.zoom, zoom)
+        if colour_map is not None:
+            # Setting an ignore in the following line. For some reason mypy
+            # can't deal with this; pyright is fine though.
+            self.set_reactive(Mandelbrot.colour_map, colour_map)  # type:ignore
+        return self
+
     def goto(self, x: float, y: float) -> Self:
         """Move the centre of the plot to the given location.
 
@@ -119,9 +157,7 @@ class Mandelbrot(Canvas, can_focus=False):
         Returns:
             Self.
         """
-        self.set_reactive(Mandelbrot.x_position, x)
-        self.set_reactive(Mandelbrot.y_position, y)
-        return self.plot()
+        return self.set(x_position=x, y_position=y).plot()
 
     def reset(self) -> Self:
         """Reset the plot to its default state.
@@ -129,15 +165,14 @@ class Mandelbrot(Canvas, can_focus=False):
         Returns:
             Self.
         """
-        self.set_reactive(Mandelbrot.max_iteration, 80)
-        self.set_reactive(Mandelbrot.multibrot, 2)
-        self.set_reactive(Mandelbrot.x_position, -0.5)
-        self.set_reactive(Mandelbrot.y_position, 0)
-        self.set_reactive(Mandelbrot.zoom, 50)
-        # Setting an ignore in the following line. For some reason mypy
-        # can't deal with this; pyright is fine though.
-        self.set_reactive(Mandelbrot.colour_map, default_map)  # type:ignore
-        return self.plot()
+        return self.set(
+            max_iteration=80,
+            multibrot=2,
+            x_position=-0.5,
+            y_position=0,
+            zoom=50,
+            colour_map=default_map,
+        ).plot()
 
     def _validate_zoom(self, zoom: int) -> int:
         """Ensure the zoom doesn't fall to 0.
