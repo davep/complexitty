@@ -65,6 +65,10 @@ complexitty --bindings
 complexitty --bindings
 ```
 
+#### `-c`, `--colour-map`, `--color-map`
+
+Set the colour map to use in the plot.
+
 #### `-h`, `--help`
 
 Prints the help for the `complexitty` command.
@@ -76,6 +80,10 @@ complexitty --help
 complexitty --help
 ```
 
+#### `-i`, `--max-iteration`
+
+Set the maximum number of iterations for the plot's calculation.
+
 #### `--license`, `--licence`
 
 Prints a summary of [Complexitty's license](license.md).
@@ -86,6 +94,10 @@ complexitty --license
 ```bash exec="on" result="text"
 complexitty --license
 ```
+
+#### `-m`, `--multibrot`
+
+Set the 'multibrot' parameter for the plot.
 
 #### `-t`, `--theme`
 
@@ -111,6 +123,18 @@ complexitty --version
 ```bash exec="on" result="text"
 complexitty --version
 ```
+
+#### `-x`, `--x-position`
+
+Set the X position of the centre of the plot.
+
+#### `-y`, `--y-position`
+
+Set the Y position of the centre of the plot.
+
+#### `-z`, `--zoom`
+
+Set the amount of zoom to use for the plot.
 
 ## Getting help
 
