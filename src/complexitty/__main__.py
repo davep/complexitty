@@ -10,6 +10,7 @@ from operator import attrgetter
 # Local imports.
 from . import __doc__, __version__
 from .complexitty import Complexitty
+from .mandelbrot import colour_maps
 
 
 ##############################################################################
@@ -50,6 +51,56 @@ def get_args() -> Namespace:
         "--bindings",
         help="List commands that can have their bindings changed",
         action="store_true",
+    )
+
+    # Add --colour-map
+    parser.add_argument(
+        "-c",
+        "--colour-map",
+        "--color-map",
+        help="Set the colour map",
+        type=str,
+        choices=colour_maps(),
+    )
+
+    # Add --max-iteration
+    parser.add_argument(
+        "-i",
+        "--max-iteration",
+        help="Set maximum iterations",
+        type=int,
+    )
+
+    # Add --multibrot
+    parser.add_argument(
+        "-m",
+        "--multibrot",
+        help="Set the 'multibrot' value",
+        type=int,
+    )
+
+    # Add --x-position
+    parser.add_argument(
+        "-x",
+        "--x-position",
+        help="Set the X position",
+        type=float,
+    )
+
+    # Add --x-position
+    parser.add_argument(
+        "-y",
+        "--y-position",
+        help="Set the Y position",
+        type=float,
+    )
+
+    # Add --zoom
+    parser.add_argument(
+        "-z",
+        "--zoom",
+        help="Set the zoom level",
+        type=int,
     )
 
     # Add --theme

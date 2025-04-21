@@ -1,5 +1,22 @@
 # Complexitty ChangeLog
 
+## Unreleased
+
+**Released: WiP**
+
+- Added `--colour-map` as a command line switch.
+  ([#7](https://github.com/davep/complexitty/pull/7))
+- Added `--max-iteration` as a command line switch.
+  ([#7](https://github.com/davep/complexitty/pull/7))
+- Added `--multibrot` as a command line switch.
+  ([#7](https://github.com/davep/complexitty/pull/7))
+- Added `--x-position` as a command line switch.
+  ([#7](https://github.com/davep/complexitty/pull/7))
+- Added `--y-position` as a command line switch.
+  ([#7](https://github.com/davep/complexitty/pull/7))
+- Added `--zoom` as a command line switch.
+  ([#7](https://github.com/davep/complexitty/pull/7))
+
 ## v0.1.1
 
 **Released: 2025-04-19**

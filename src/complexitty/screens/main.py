@@ -2,6 +2,7 @@
 
 ##############################################################################
 # Python imports.
+from argparse import Namespace
 from re import Pattern, compile
 from typing import Final
 
@@ -49,7 +50,7 @@ from ..commands import (
     ZoomOut,
     ZoomOutFaster,
 )
-from ..mandelbrot import Mandelbrot, colouring
+from ..mandelbrot import Mandelbrot, get_colour_map
 from ..providers import MainCommands
 
 
@@ -104,11 +105,34 @@ class Main(EnhancedScreen[None]):
     COMMANDS = {MainCommands}
     HELP = "## Commands and keys"
 
+    def __init__(self, arguments: Namespace) -> None:
+        """Initialise the screen object.
+
+        Args:
+            arguments: The command line arguments.
+        """
+        self._arguments = arguments
+        """The command line arguments passed to the application."""
+        super().__init__()
+
     def compose(self) -> ComposeResult:
         """Compose the content of the main screen."""
         yield Header()
         yield Mandelbrot()
         yield Footer()
+
+    def on_mount(self) -> None:
+        """Configure the Mandelbrot once the DOM is ready."""
+        self.query_one(Mandelbrot).set(
+            max_iteration=self._arguments.max_iteration,
+            multibrot=self._arguments.multibrot,
+            zoom=self._arguments.zoom,
+            x_position=self._arguments.x_position,
+            y_position=self._arguments.y_position,
+            colour_map=None
+            if self._arguments.colour_map is None
+            else get_colour_map(self._arguments.colour_map),
+        )
 
     @on(Mandelbrot.Plotted)
     def _update_situation(self, message: Mandelbrot.Plotted) -> None:
@@ -167,7 +191,7 @@ class Main(EnhancedScreen[None]):
         Args:
             colour_map: The name of the colour map to use.
         """
-        self.query_one(Mandelbrot).colour_map = getattr(colouring, colour_map)
+        self.query_one(Mandelbrot).colour_map = get_colour_map(colour_map)
 
     def action_multibrot(self, change: int) -> None:
         """Change the 'multibrot' value.

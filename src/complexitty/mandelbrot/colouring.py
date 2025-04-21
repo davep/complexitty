@@ -3,7 +3,7 @@
 ##############################################################################
 # Python imports.
 from functools import lru_cache
-from typing import Callable, TypeAlias
+from typing import Callable, Final, TypeAlias
 
 ##############################################################################
 # Textual imports.
@@ -116,6 +116,37 @@ def shades_of_blue(value: int, _: int) -> Color:
         The colour to plot the point with.
     """
     return BLUES[value % 16]
+
+
+##############################################################################
+COLOUR_MAPS: Final[dict[str, ColourMap]] = {
+    "blue_brown_map": blue_brown_map,
+    "default_map": default_map,
+    "shades_of_blue": shades_of_blue,
+    "shades_of_green": shades_of_green,
+    "shades_of_red": shades_of_red,
+}
+"""Name to colour map function map."""
+
+
+##############################################################################
+def colour_maps() -> tuple[str, ...]:
+    """Get the names of the available colour maps."""
+    return tuple(COLOUR_MAPS.keys())
+
+
+##############################################################################
+def get_colour_map(map_name: str) -> ColourMap:
+    """Get a colour mapping function by its name.
+
+    Args:
+        map_name: The name of the map to get.
+
+    Returns:
+        The requested colour mapping function, or the default map if the
+        name isn't known.
+    """
+    return COLOUR_MAPS.get(map_name, default_map)
 
 
 ### colouring.py ends here
