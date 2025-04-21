@@ -51,7 +51,7 @@ command.
 
 ### Command line options
 
-Complexity has a number of command line options; they include:
+Complexitty has a number of command line options; they include:
 
 #### `-b`, `--bindings`
 
