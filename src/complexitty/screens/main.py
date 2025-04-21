@@ -50,7 +50,7 @@ from ..commands import (
     ZoomOut,
     ZoomOutFaster,
 )
-from ..mandelbrot import Mandelbrot, colouring
+from ..mandelbrot import Mandelbrot, get_colour_map
 from ..providers import MainCommands
 
 
@@ -188,7 +188,7 @@ class Main(EnhancedScreen[None]):
         Args:
             colour_map: The name of the colour map to use.
         """
-        self.query_one(Mandelbrot).colour_map = getattr(colouring, colour_map)
+        self.query_one(Mandelbrot).colour_map = get_colour_map(colour_map)
 
     def action_multibrot(self, change: int) -> None:
         """Change the 'multibrot' value.
