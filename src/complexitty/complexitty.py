@@ -84,7 +84,7 @@ class Complexitty(EnhancedApp[None]):
         Returns:
             The default screen.
         """
-        return Main()
+        return Main(self._arguments)
 
 
 ### complexitty.py ends here

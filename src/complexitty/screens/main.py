@@ -2,6 +2,7 @@
 
 ##############################################################################
 # Python imports.
+from argparse import Namespace
 from re import Pattern, compile
 from typing import Final
 
@@ -104,11 +105,31 @@ class Main(EnhancedScreen[None]):
     COMMANDS = {MainCommands}
     HELP = "## Commands and keys"
 
+    def __init__(self, arguments: Namespace) -> None:
+        """Initialise the screen object.
+
+        Args:
+            arguments: The command line arguments.
+        """
+        self._arguments = arguments
+        """The command line arguments passed to the application."""
+        super().__init__()
+
     def compose(self) -> ComposeResult:
         """Compose the content of the main screen."""
         yield Header()
         yield Mandelbrot()
         yield Footer()
+
+    def on_mount(self) -> None:
+        """Configure the Mandelbrot once the DOM is ready."""
+        self.query_one(Mandelbrot).set(
+            max_iteration=self._arguments.max_iteration,
+            multibrot=self._arguments.multibrot,
+            zoom=self._arguments.zoom,
+            x_position=self._arguments.x_position,
+            y_position=self._arguments.y_position,
+        )
 
     @on(Mandelbrot.Plotted)
     def _update_situation(self, message: Mandelbrot.Plotted) -> None:

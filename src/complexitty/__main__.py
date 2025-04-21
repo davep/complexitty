@@ -52,6 +52,46 @@ def get_args() -> Namespace:
         action="store_true",
     )
 
+    # Add --max-iteration
+    parser.add_argument(
+        "-i",
+        "--max-iteration",
+        help="Set maximum iterations",
+        type=int,
+    )
+
+    # Add --multibrot
+    parser.add_argument(
+        "-m",
+        "--multibrot",
+        help="Set the 'multibrot' value",
+        type=int,
+    )
+
+    # Add --x-position
+    parser.add_argument(
+        "-x",
+        "--x-position",
+        help="Set the X position",
+        type=float,
+    )
+
+    # Add --x-position
+    parser.add_argument(
+        "-y",
+        "--y-position",
+        help="Set the Y position",
+        type=float,
+    )
+
+    # Add --zoom
+    parser.add_argument(
+        "-z",
+        "--zoom",
+        help="Set the zoom level",
+        type=int,
+    )
+
     # Add --theme
     parser.add_argument(
         "-t",
