@@ -129,6 +129,9 @@ class Main(EnhancedScreen[None]):
             zoom=self._arguments.zoom,
             x_position=self._arguments.x_position,
             y_position=self._arguments.y_position,
+            colour_map=None
+            if self._arguments.colour_map is None
+            else get_colour_map(self._arguments.colour_map),
         )
 
     @on(Mandelbrot.Plotted)

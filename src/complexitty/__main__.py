@@ -10,6 +10,7 @@ from operator import attrgetter
 # Local imports.
 from . import __doc__, __version__
 from .complexitty import Complexitty
+from .mandelbrot import colour_maps
 
 
 ##############################################################################
@@ -50,6 +51,16 @@ def get_args() -> Namespace:
         "--bindings",
         help="List commands that can have their bindings changed",
         action="store_true",
+    )
+
+    # Add --colour-map
+    parser.add_argument(
+        "-c",
+        "--colour-map",
+        "--color-map",
+        help="Set the colour map",
+        type=str,
+        choices=colour_maps(),
     )
 
     # Add --max-iteration
