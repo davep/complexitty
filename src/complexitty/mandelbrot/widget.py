@@ -142,9 +142,7 @@ class Mandelbrot(Canvas, can_focus=False):
         if zoom is not None:
             self.set_reactive(Mandelbrot.zoom, zoom)
         if colour_map is not None:
-            # Setting an ignore in the following line. For some reason mypy
-            # can't deal with this; pyright is fine though.
-            self.set_reactive(Mandelbrot.colour_map, colour_map)  # type:ignore
+            self.set_reactive(Mandelbrot.colour_map, colour_map)
         return self
 
     def goto(self, x: float, y: float) -> Self:
