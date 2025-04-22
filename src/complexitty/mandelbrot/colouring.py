@@ -120,6 +120,24 @@ def shades_of_blue(value: int, _: int) -> Color:
 
 ##############################################################################
 @lru_cache
+def gradient(*stops: tuple[float, Color], quality: int) -> Gradient:
+    """Create a Textual `Gradient`.
+
+    Args:
+        stops: Color stops.
+        quality: The number of steps in the gradient.
+
+    Returns:
+        The gradient.
+
+    Raises:
+        ValueError: If any stops are missing (must be at least a stop for 0 and 1).
+    """
+    return Gradient(*stops, quality=quality)
+
+
+##############################################################################
+@lru_cache
 def blues_and_pinks(value: int, max_iteration: int) -> Color:
     """Calculate a colour for an escape value.
 
@@ -130,7 +148,7 @@ def blues_and_pinks(value: int, max_iteration: int) -> Color:
         The colour to plot the point with.
     """
     return (
-        Gradient(
+        gradient(
             (0, Color(245, 169, 184)),
             (0.125, Color(91, 206, 250)),
             (0.25, Color(245, 169, 184)),
@@ -159,7 +177,7 @@ def rainbow(value: int, max_iteration: int) -> Color:
         The colour to plot the point with.
     """
     return (
-        Gradient(
+        gradient(
             (0, Color(288, 3, 3)),
             (0.2, Color(255, 140, 0)),
             (0.4, Color(255, 237, 0)),
