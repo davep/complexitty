@@ -45,4 +45,20 @@ class SetColourToShadesOfBlue(Command):
     ACTION = "set_colour('shades_of_blue')"
 
 
+##############################################################################
+class SetColourToBluesAndPinks(Command):
+    """Set the colours to a blue/pink palette"""
+
+    BINDING_KEY = "6"
+    ACTION = "set_colour('blues_and_pinks')"
+
+
+##############################################################################
+class SetColourToRainbow(Command):
+    """Set the colours to a rainbow palette"""
+
+    BINDING_KEY = "7"
+    ACTION = "set_colour('rainbow')"
+
+
 ### colouring.py ends here

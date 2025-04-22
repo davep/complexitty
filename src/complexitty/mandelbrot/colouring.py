@@ -7,7 +7,7 @@ from typing import Callable, Final, TypeAlias
 
 ##############################################################################
 # Textual imports.
-from textual.color import Color
+from textual.color import Color, Gradient
 
 ##############################################################################
 ColourMap: TypeAlias = Callable[[int, int], Color]
@@ -15,7 +15,7 @@ ColourMap: TypeAlias = Callable[[int, int], Color]
 
 
 ##############################################################################
-@lru_cache()
+@lru_cache
 def default_map(value: int, max_iteration: int) -> Color:
     """Calculate a colour for an escape value.
 
@@ -69,7 +69,7 @@ REDS = [Color(n * 16, 0, 0) for n in range(16)]
 
 
 ##############################################################################
-@lru_cache()
+@lru_cache
 def shades_of_red(value: int, _: int) -> Color:
     """Calculate a colour for an escape value.
 
@@ -87,7 +87,7 @@ GREENS = [Color(0, n * 16, 0) for n in range(16)]
 
 
 ##############################################################################
-@lru_cache()
+@lru_cache
 def shades_of_green(value: int, _: int) -> Color:
     """Calculate a colour for an escape value.
 
@@ -105,7 +105,7 @@ BLUES = [Color(0, 0, n * 16) for n in range(16)]
 
 
 ##############################################################################
-@lru_cache()
+@lru_cache
 def shades_of_blue(value: int, _: int) -> Color:
     """Calculate a colour for an escape value.
 
@@ -119,12 +119,69 @@ def shades_of_blue(value: int, _: int) -> Color:
 
 
 ##############################################################################
+@lru_cache
+def blues_and_pinks(value: int, max_iteration: int) -> Color:
+    """Calculate a colour for an escape value.
+
+    Args:
+        value: An escape value from a Mandelbrot set.
+
+    Returns:
+        The colour to plot the point with.
+    """
+    return (
+        Gradient(
+            (0, Color(245, 169, 184)),
+            (0.125, Color(91, 206, 250)),
+            (0.25, Color(245, 169, 184)),
+            (0.375, Color(91, 206, 250)),
+            (0.5, Color(245, 169, 184)),
+            (0.625, Color(91, 206, 250)),
+            (0.75, Color(245, 169, 184)),
+            (0.875, Color(91, 206, 250)),
+            (1, Color(245, 169, 184)),
+            quality=max_iteration,
+        ).get_color((1 / max_iteration) * value)
+        if value
+        else Color(0, 0, 0)
+    )
+
+
+##############################################################################
+@lru_cache
+def rainbow(value: int, max_iteration: int) -> Color:
+    """Calculate a colour for an escape value.
+
+    Args:
+        value: An escape value from a Mandelbrot set.
+
+    Returns:
+        The colour to plot the point with.
+    """
+    return (
+        Gradient(
+            (0, Color(288, 3, 3)),
+            (0.2, Color(255, 140, 0)),
+            (0.4, Color(255, 237, 0)),
+            (0.6, Color(0, 128, 38)),
+            (0.8, Color(0, 76, 255)),
+            (1, Color(115, 41, 130)),
+            quality=max_iteration,
+        ).get_color((1 / max_iteration) * value)
+        if value
+        else Color(0, 0, 0)
+    )
+
+
+##############################################################################
 COLOUR_MAPS: Final[dict[str, ColourMap]] = {
     "blue_brown_map": blue_brown_map,
     "default_map": default_map,
     "shades_of_blue": shades_of_blue,
     "shades_of_green": shades_of_green,
     "shades_of_red": shades_of_red,
+    "blues_and_pinks": blues_and_pinks,
+    "rainbow": rainbow,
 }
 """Name to colour map function map."""
 
