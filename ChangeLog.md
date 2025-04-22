@@ -1,8 +1,8 @@
 # Complexitty ChangeLog
 
-## Unreleased
+## v0.2.0
 
-**Released: WiP**
+**Released: 2025-04-22**
 
 - Added `--colour-map` as a command line switch.
   ([#7](https://github.com/davep/complexitty/pull/7))
