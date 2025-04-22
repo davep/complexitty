@@ -1,5 +1,12 @@
 # Complexitty ChangeLog
 
+## v0.4.0
+
+**Released: WiP**
+
+- Added a couple more colour options.
+  ([#9](https://github.com/davep/complexitty/pull/9))
+
 ## v0.2.0
 
 **Released: 2025-04-22**

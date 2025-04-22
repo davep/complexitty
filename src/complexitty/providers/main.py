@@ -31,7 +31,9 @@ from ..commands import (
     Quit,
     Reset,
     SetColourToBluesAndBrowns,
+    SetColourToBluesAndPinks,
     SetColourToDefault,
+    SetColourToRainbow,
     SetColourToShadesOfBlue,
     SetColourToShadesOfGreen,
     SetColourToShadesOfRed,
@@ -74,7 +76,9 @@ class MainCommands(CommandsProvider):
         yield Quit()
         yield Reset()
         yield SetColourToBluesAndBrowns()
+        yield SetColourToBluesAndPinks()
         yield SetColourToDefault()
+        yield SetColourToRainbow()
         yield SetColourToShadesOfBlue()
         yield SetColourToShadesOfGreen()
         yield SetColourToShadesOfRed()

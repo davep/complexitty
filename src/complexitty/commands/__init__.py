@@ -4,7 +4,9 @@
 # Local imports.
 from .colouring import (
     SetColourToBluesAndBrowns,
+    SetColourToBluesAndPinks,
     SetColourToDefault,
+    SetColourToRainbow,
     SetColourToShadesOfBlue,
     SetColourToShadesOfGreen,
     SetColourToShadesOfRed,
@@ -59,7 +61,9 @@ __all__ = [
     "Quit",
     "Reset",
     "SetColourToBluesAndBrowns",
+    "SetColourToBluesAndPinks",
     "SetColourToDefault",
+    "SetColourToRainbow",
     "SetColourToShadesOfBlue",
     "SetColourToShadesOfGreen",
     "SetColourToShadesOfRed",
