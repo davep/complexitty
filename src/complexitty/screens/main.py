@@ -22,6 +22,7 @@ from textual_enhanced.screen import EnhancedScreen
 ##############################################################################
 # Local imports.
 from ..commands import (
+    CopyCommandLineToClipboard,
     DecreaseMaximumIteration,
     DecreaseMultibrot,
     GoMiddle,
@@ -75,6 +76,7 @@ class Main(EnhancedScreen[None]):
         ChangeTheme,
         Quit,
         # Everything else.
+        CopyCommandLineToClipboard,
         DecreaseMaximumIteration,
         DecreaseMultibrot,
         GoMiddle,
@@ -252,6 +254,21 @@ class Main(EnhancedScreen[None]):
                     title="Invalid location input",
                     severity="error",
                 )
+
+    def action_copy_command_line_to_clipboard_command(self) -> None:
+        """Copy the current view as a command, to the clipboard."""
+        plot = self.query_one(Mandelbrot)
+        command = (
+            f"complexitty "
+            f"--x-position={plot.x_position} "
+            f"--y-position={plot.y_position} "
+            f"--zoom={plot.zoom} "
+            f"--max-iteration={plot.max_iteration} "
+            f"--multibrot={plot.multibrot} "
+            f"--colour-map={plot.colour_map.__name__}"
+        )
+        self.app.copy_to_clipboard(command)
+        self.notify(command, title="Copied")
 
 
 ### main.py ends here

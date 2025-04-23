@@ -14,4 +14,11 @@ class Quit(Command):
     SHOW_IN_FOOTER = True
 
 
+##############################################################################
+class CopyCommandLineToClipboard(Command):
+    """Copy the command line for the current view to the clipboard"""
+
+    BINDING_KEY = "c"
+
+
 ### main.py ends here

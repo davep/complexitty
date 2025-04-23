@@ -12,6 +12,7 @@ from textual_enhanced.commands import (
 ##############################################################################
 # Local imports.
 from ..commands import (
+    CopyCommandLineToClipboard,
     DecreaseMaximumIteration,
     DecreaseMultibrot,
     GoMiddle,
@@ -55,6 +56,7 @@ class MainCommands(CommandsProvider):
         Yields:
             The commands for the command palette.
         """
+        yield CopyCommandLineToClipboard()
         yield ChangeTheme()
         yield DecreaseMaximumIteration()
         yield DecreaseMultibrot()

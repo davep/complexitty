@@ -11,7 +11,7 @@ from .colouring import (
     SetColourToShadesOfGreen,
     SetColourToShadesOfRed,
 )
-from .main import Quit
+from .main import CopyCommandLineToClipboard, Quit
 from .navigation import (
     GoMiddle,
     GoTo,
@@ -42,6 +42,7 @@ from .plotting import (
 ##############################################################################
 # Exports.
 __all__ = [
+    "CopyCommandLineToClipboard",
     "DecreaseMaximumIteration",
     "DecreaseMultibrot",
     "GreatlyDecreaseMaximumIteration",

@@ -10,6 +10,7 @@
   values. ([#11](https://github.com/davep/complexitty/issues/11))
 - Changed the display of the X/Y location so that the precision adapts to
   the zoom level. ([#14](https://github.com/davep/complexitty/issues/14))
+- Added `CopyCommandLineToClipboard`.
 
 ## v0.2.0
 
