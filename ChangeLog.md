@@ -6,6 +6,8 @@
 
 - Added a couple more colour options.
   ([#9](https://github.com/davep/complexitty/pull/9))
+- Fixed the `--zoom` command line switch so that it accepts floating point
+  values. ([#11](https://github.com/davep/complexitty/issues/11))
 
 ## v0.2.0
 
