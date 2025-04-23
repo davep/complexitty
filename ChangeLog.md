@@ -8,6 +8,8 @@
   ([#9](https://github.com/davep/complexitty/pull/9))
 - Fixed the `--zoom` command line switch so that it accepts floating point
   values. ([#11](https://github.com/davep/complexitty/issues/11))
+- Changed the display of the X/Y location so that the precision adapts to
+  the zoom level. ([#14](https://github.com/davep/complexitty/issues/14))
 
 ## v0.2.0
 
