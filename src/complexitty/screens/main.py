@@ -163,23 +163,14 @@ class Main(EnhancedScreen[None]):
         """
         self.query_one(Mandelbrot).zoom *= change
 
-    def action_move_x(self, amount: int) -> None:
-        """Move the plot in the X direction.
+    def action_move(self, x: int, y: int) -> None:
+        """Move the plot in the indicated direction.
 
         Args:
-            amount: The amount to move.
+            x: The number of pixels to move in the X direction.
+            y: The number of pixels to move in the Y direction.
         """
-        plot = self.query_one(Mandelbrot)
-        plot.x_position += ((plot.width / plot.zoom) / plot.width) * amount
-
-    def action_move_y(self, amount: int) -> None:
-        """Move the plot in the Y direction.
-
-        Args:
-            amount: The amount to move.
-        """
-        plot = self.query_one(Mandelbrot)
-        plot.y_position += ((plot.height / plot.zoom) / plot.height) * amount
+        self.query_one(Mandelbrot).move(x, y)
 
     def action_iterate(self, change: int) -> None:
         """Change the maximum iteration.

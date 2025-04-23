@@ -46,7 +46,7 @@ class MoveUp(Command):
     """Move up"""
 
     BINDING_KEY = "up, w, k"
-    ACTION = "move_y(-10)"
+    ACTION = "move(0, -10)"
     SHOW_IN_FOOTER = True
     FOOTER_TEXT = "Up"
 
@@ -56,7 +56,7 @@ class MoveUpSlowly(Command):
     """Move up slowly"""
 
     BINDING_KEY = "shift+up, W, K"
-    ACTION = "move_y(-1)"
+    ACTION = "move(0, -1)"
 
 
 ##############################################################################
@@ -64,7 +64,7 @@ class MoveDown(Command):
     """Move down"""
 
     BINDING_KEY = "down, s, j"
-    ACTION = "move_y(10)"
+    ACTION = "move(0, 10)"
     SHOW_IN_FOOTER = True
     FOOTER_TEXT = "Down"
 
@@ -74,7 +74,7 @@ class MoveDownSlowly(Command):
     """Move down slowly"""
 
     BINDING_KEY = "shift+down, S, J"
-    ACTION = "move_y(1)"
+    ACTION = "move(0, 1)"
 
 
 ##############################################################################
@@ -82,7 +82,7 @@ class MoveLeft(Command):
     """Move left"""
 
     BINDING_KEY = "left, a, h"
-    ACTION = "move_x(-10)"
+    ACTION = "move(-10, 0)"
     SHOW_IN_FOOTER = True
     FOOTER_TEXT = "Left"
 
@@ -92,7 +92,7 @@ class MoveLeftSlowly(Command):
     """Move left slowly"""
 
     BINDING_KEY = "shift+left, A, H"
-    ACTION = "move_x(-1)"
+    ACTION = "move(-1, 0)"
 
 
 ##############################################################################
@@ -100,7 +100,7 @@ class MoveRight(Command):
     """Move right"""
 
     BINDING_KEY = "right, d, l"
-    ACTION = "move_x(10)"
+    ACTION = "move(10, 0)"
     SHOW_IN_FOOTER = True
     FOOTER_TEXT = "Right"
 
@@ -110,7 +110,7 @@ class MoveRightSlowly(Command):
     """Move right slowly"""
 
     BINDING_KEY = "shift+right, D, L"
-    ACTION = "move_x(1)"
+    ACTION = "move(1, 0)"
 
 
 ##############################################################################

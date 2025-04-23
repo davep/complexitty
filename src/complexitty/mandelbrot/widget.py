@@ -72,6 +72,16 @@ class Mandelbrot(Canvas, can_focus=False):
         """Initialise the widget."""
         super().__init__(0, 0)
 
+    @property
+    def x_pixel_size(self) -> float:
+        """The size of a pixel in the X direction."""
+        return (self.width / self.zoom) / self.width if self.width else 0
+
+    @property
+    def y_pixel_size(self) -> float:
+        """The size of a pixel in the Y direction."""
+        return (self.height / self.zoom) / self.height if self.height else 0
+
     @on(Mount)
     @on(Resize)
     def plot(self) -> Self:
@@ -156,6 +166,21 @@ class Mandelbrot(Canvas, can_focus=False):
             Self.
         """
         return self.set(x_position=x, y_position=y).plot()
+
+    def move(self, x: int, y: int) -> Self:
+        """Move the centre of the plot in a relative direction.
+
+        Args:
+            x: The number of on-screen pixels to move in the X direction.
+            y: The number of on-screen pixels to move in the Y direction.
+
+        Returns:
+            Self.
+        """
+        return self.goto(
+            self.x_position + (self.x_pixel_size * x),
+            self.y_position + (self.y_pixel_size * y),
+        )
 
     def reset(self) -> Self:
         """Reset the plot to its default state.
