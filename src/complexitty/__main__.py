@@ -100,7 +100,7 @@ def get_args() -> Namespace:
         "-z",
         "--zoom",
         help="Set the zoom level",
-        type=int,
+        type=float,
     )
 
     # Add --theme
