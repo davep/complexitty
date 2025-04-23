@@ -3,6 +3,7 @@
 ##############################################################################
 # Python imports.
 from argparse import Namespace
+from math import floor, log10
 from re import Pattern, compile
 from typing import Final
 
@@ -145,8 +146,18 @@ class Main(EnhancedScreen[None]):
         Args:
             message: The message letting us know the plot finished.
         """
+        x_precision = (
+            -floor(log10(abs(message.mandelbrot.x_pixel_size)))
+            if message.mandelbrot.x_pixel_size
+            else 0
+        )
+        y_precision = (
+            -floor(log10(abs(message.mandelbrot.y_pixel_size)))
+            if message.mandelbrot.y_pixel_size
+            else 0
+        )
         message.mandelbrot.border_title = (
-            f"X: {message.mandelbrot.x_position:.10f} | Y: {message.mandelbrot.y_position:.10f} "
+            f"X: {message.mandelbrot.x_position:.{x_precision + 2}f} | Y: {message.mandelbrot.y_position:.{y_precision + 2}f} "
             f"| Zoom: {message.mandelbrot.zoom:.4f}"
         )
         message.mandelbrot.border_subtitle = (
