@@ -13,6 +13,7 @@
 - Added `CopyCommandLineToClipboard`.
   ([#20](https://github.com/davep/complexitty/pull/20))
 - Added the ability to undo a change in the plot.
+  ([#21](https://github.com/davep/complexitty/pull/21))
 
 ## v0.2.0
 
