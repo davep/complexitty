@@ -26,6 +26,7 @@ class Undo(Command):
     """Undo the latest change"""
 
     BINDING_KEY = "backspace"
+    SHOW_IN_FOOTER = True
 
 
 ### main.py ends here
