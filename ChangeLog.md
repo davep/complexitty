@@ -12,6 +12,7 @@
   the zoom level. ([#14](https://github.com/davep/complexitty/issues/14))
 - Added `CopyCommandLineToClipboard`.
   ([#20](https://github.com/davep/complexitty/pull/20))
+- Added the ability to undo a change in the plot.
 
 ## v0.2.0
 

@@ -11,7 +11,7 @@ from .colouring import (
     SetColourToShadesOfGreen,
     SetColourToShadesOfRed,
 )
-from .main import CopyCommandLineToClipboard, Quit
+from .main import CopyCommandLineToClipboard, Quit, Undo
 from .navigation import (
     GoMiddle,
     GoTo,
@@ -68,6 +68,7 @@ __all__ = [
     "SetColourToShadesOfBlue",
     "SetColourToShadesOfGreen",
     "SetColourToShadesOfRed",
+    "Undo",
     "ZeroZero",
     "ZoomIn",
     "ZoomInFaster",

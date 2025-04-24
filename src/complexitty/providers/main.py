@@ -38,6 +38,7 @@ from ..commands import (
     SetColourToShadesOfBlue,
     SetColourToShadesOfGreen,
     SetColourToShadesOfRed,
+    Undo,
     ZeroZero,
     ZoomIn,
     ZoomInFaster,
@@ -84,6 +85,7 @@ class MainCommands(CommandsProvider):
         yield SetColourToShadesOfBlue()
         yield SetColourToShadesOfGreen()
         yield SetColourToShadesOfRed()
+        yield Undo()
         yield ZeroZero()
         yield ZoomIn()
         yield ZoomInFaster()

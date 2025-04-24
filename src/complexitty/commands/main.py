@@ -21,4 +21,11 @@ class CopyCommandLineToClipboard(Command):
     BINDING_KEY = "c"
 
 
+##############################################################################
+class Undo(Command):
+    """Undo the latest change"""
+
+    BINDING_KEY = "backspace"
+
+
 ### main.py ends here
