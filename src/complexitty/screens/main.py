@@ -5,7 +5,7 @@
 from argparse import Namespace
 from math import floor, log10
 from re import Pattern, compile
-from typing import Final
+from typing import Final, NamedTuple, TypeAlias
 
 ##############################################################################
 # Textual imports.
@@ -18,6 +18,7 @@ from textual.widgets import Footer, Header
 from textual_enhanced.commands import ChangeTheme, Command, Help
 from textual_enhanced.dialogs import ModalInput
 from textual_enhanced.screen import EnhancedScreen
+from textual_enhanced.tools import History
 
 ##############################################################################
 # Local imports.
@@ -48,6 +49,7 @@ from ..commands import (
     SetColourToShadesOfBlue,
     SetColourToShadesOfGreen,
     SetColourToShadesOfRed,
+    Undo,
     ZeroZero,
     ZoomIn,
     ZoomInFaster,
@@ -56,6 +58,27 @@ from ..commands import (
 )
 from ..mandelbrot import Mandelbrot, get_colour_map
 from ..providers import MainCommands
+
+
+##############################################################################
+class Situation(NamedTuple):
+    """A class to hold a particular situation we can undo to."""
+
+    x_position: float
+    """The X position in the plot."""
+    y_position: float
+    """The Y position in the plot."""
+    zoom: float
+    """The zoom level."""
+    max_iteration: int
+    """The maximum iteration."""
+    multibrot: float
+    """The multibrot setting."""
+
+
+##############################################################################
+PlotHistory: TypeAlias = History[Situation]
+"""Type of the plot history."""
 
 
 ##############################################################################
@@ -101,6 +124,7 @@ class Main(EnhancedScreen[None]):
         SetColourToShadesOfBlue,
         SetColourToShadesOfGreen,
         SetColourToShadesOfRed,
+        Undo,
         ZeroZero,
         ZoomIn,
         ZoomInFaster,
@@ -120,6 +144,8 @@ class Main(EnhancedScreen[None]):
         """
         self._arguments = arguments
         """The command line arguments passed to the application."""
+        self._history = PlotHistory()
+        """The plot situation history."""
         super().__init__()
 
     def compose(self) -> ComposeResult:
@@ -140,6 +166,7 @@ class Main(EnhancedScreen[None]):
             if self._arguments.colour_map is None
             else get_colour_map(self._arguments.colour_map),
         )
+        self._remember()
 
     @on(Mandelbrot.Plotted)
     def _update_situation(self, message: Mandelbrot.Plotted) -> None:
@@ -168,6 +195,19 @@ class Main(EnhancedScreen[None]):
             f"{message.elapsed:0.4f} seconds"
         )
 
+    def _remember(self) -> None:
+        """Remember the current situation."""
+        plot = self.query_one(Mandelbrot)
+        self._history.add(
+            Situation(
+                plot.x_position,
+                plot.y_position,
+                plot.zoom,
+                plot.max_iteration,
+                plot.multibrot,
+            )
+        )
+
     def action_zoom(self, change: float) -> None:
         """Change the zoom value.
 
@@ -175,6 +215,7 @@ class Main(EnhancedScreen[None]):
             change: The amount to change the zoom by.
         """
         self.query_one(Mandelbrot).zoom *= change
+        self._remember()
 
     def action_move(self, x: int, y: int) -> None:
         """Move the plot in the indicated direction.
@@ -184,6 +225,7 @@ class Main(EnhancedScreen[None]):
             y: The number of pixels to move in the Y direction.
         """
         self.query_one(Mandelbrot).move(x, y)
+        self._remember()
 
     def action_iterate(self, change: int) -> None:
         """Change the maximum iteration.
@@ -192,6 +234,7 @@ class Main(EnhancedScreen[None]):
             change: The change to make to the maximum iterations.
         """
         self.query_one(Mandelbrot).max_iteration += change
+        self._remember()
 
     def action_set_colour(self, colour_map: str) -> None:
         """Set the colour map for the plot.
@@ -208,6 +251,7 @@ class Main(EnhancedScreen[None]):
             change: The change to make to the 'multibrot' value.
         """
         self.query_one(Mandelbrot).multibrot += change
+        self._remember()
 
     def action_goto(self, x: int, y: int) -> None:
         """Go to a specific location.
@@ -217,10 +261,12 @@ class Main(EnhancedScreen[None]):
             y: The Y location to go to.
         """
         self.query_one(Mandelbrot).goto(x, y)
+        self._remember()
 
     def action_reset_command(self) -> None:
         """Reset the plot to its default values."""
         self.query_one(Mandelbrot).reset()
+        self._remember()
 
     _VALID_LOCATION: Final[Pattern[str]] = compile(
         r"(?P<x>[^, ]+) *[, ] *(?P<y>[^, ]+)"
@@ -269,6 +315,20 @@ class Main(EnhancedScreen[None]):
         )
         self.app.copy_to_clipboard(command)
         self.notify(command, title="Copied")
+
+    def action_undo_command(self) -> None:
+        """Undo through the history."""
+        if (
+            self._history.backward()
+            and (situation := self._history.current_item) is not None
+        ):
+            self.query_one(Mandelbrot).set(
+                x_position=situation.x_position,
+                y_position=situation.y_position,
+                zoom=situation.zoom,
+                max_iteration=situation.max_iteration,
+                multibrot=situation.multibrot,
+            ).plot()
 
 
 ### main.py ends here
