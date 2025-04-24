@@ -85,7 +85,7 @@ class MainCommands(CommandsProvider):
         yield SetColourToShadesOfBlue()
         yield SetColourToShadesOfGreen()
         yield SetColourToShadesOfRed()
-        yield Undo()
+        yield from self.maybe(Undo)
         yield ZeroZero()
         yield ZoomIn()
         yield ZoomInFaster()
