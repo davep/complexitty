@@ -167,6 +167,27 @@ class Main(EnhancedScreen[None]):
             else get_colour_map(self._arguments.colour_map),
         )
 
+    def check_action(self, action: str, parameters: tuple[object, ...]) -> bool | None:
+        """Check if an action is possible to perform right now.
+
+        Args:
+            action: The action to perform.
+            parameters: The parameters of the action.
+
+        Returns:
+            `True` if it can perform, `False` or `None` if not.
+        """
+        if not self.is_mounted:
+            # Surprisingly it seems that Textual's "dynamic bindings" can
+            # cause this method to be called before the DOM is up and
+            # running. This breaks the rule of least astonishment, I'd say,
+            # but okay let's be defensive... (when I can come up with a nice
+            # little MRE I'll report it).
+            return True
+        if action == Undo.action_name():
+            return bool(self._history) or None
+        return True
+
     @on(Mandelbrot.Plotted)
     def _update_situation(self, message: Mandelbrot.Plotted) -> None:
         """Update the current situation after the latest plot.
@@ -206,6 +227,7 @@ class Main(EnhancedScreen[None]):
                 plot.multibrot,
             )
         )
+        self.refresh_bindings()
 
     def action_zoom(self, change: float) -> None:
         """Change the zoom value.
@@ -321,6 +343,7 @@ class Main(EnhancedScreen[None]):
             situation = self._history.pop()
         except IndexError:
             return
+        self.refresh_bindings()
         self.query_one(Mandelbrot).set(
             x_position=situation.x_position,
             y_position=situation.y_position,
