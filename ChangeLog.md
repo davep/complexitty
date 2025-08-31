@@ -6,6 +6,7 @@
 
 - Migrated from `rye` to `uv` for development management.
   ([#25](https://github.com/davep/complexitty/pull/25))
+- Added Python 3.14 as a tested/supported Python version.
 
 ## v0.3.0
 
