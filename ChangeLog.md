@@ -1,5 +1,12 @@
 # Complexitty ChangeLog
 
+## Unreleased
+
+**Released: WiP**
+
+- Migrated from `rye` to `uv` for development management.
+  ([#25](https://github.com/davep/complexitty/pull/25))
+
 ## v0.3.0
 
 **Released: 2025-04-25**
