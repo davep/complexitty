@@ -48,12 +48,10 @@ Discussions = "https://github.com/davep/complexitty/discussions"
 complexitty = "complexitty.__main__:main"
 
 [build-system]
-# https://github.com/astral-sh/rye/issues/1446
-requires = ["hatchling==1.26.3", "hatch-vcs"]
-# requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.8.11,<0.9.0"]
+build-backend = "uv_build"
 
-[tool.rye]
+[tool.uv]
 managed = true
 dev-dependencies = [
     "pre-commit>=4.2.0",
@@ -62,13 +60,14 @@ dev-dependencies = [
     "textual-dev>=1.7.0",
     "mkdocs-material>=9.6.12",
     "markdown-exec>=1.10.3",
+    "ruff>=0.12.9",
 ]
 
-[tool.hatch.metadata]
-allow-direct-references = true
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/complexitty"]
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true
 
 [tool.pyright]
 venvPath="."
