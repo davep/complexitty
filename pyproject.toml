@@ -13,7 +13,7 @@ dependencies = [
 ]
 readme = "README.md"
 requires-python = ">= 3.10"
-license = { text = "GNU General Public License v3 or later (GPLv3+)" }
+license = "GPL-3.0-or-later"
 keywords = [
     "terminal",
     "tui",
@@ -23,17 +23,22 @@ keywords = [
     "maths",
 ]
 classifiers = [
-    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
     "Environment :: Console",
     "Development Status :: 3 - Alpha",
-    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Science/Research",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
+    "Topic :: Education",
+    "Topic :: Games/Entertainment",
     "Topic :: Terminals",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Scientific/Engineering :: Visualization",
     "Typing :: Typed",
 ]
 
