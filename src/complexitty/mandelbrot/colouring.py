@@ -2,8 +2,9 @@
 
 ##############################################################################
 # Python imports.
+from collections.abc import Callable
 from functools import lru_cache
-from typing import Callable, Final, TypeAlias
+from typing import Final, TypeAlias
 
 ##############################################################################
 # Textual imports.
