@@ -52,7 +52,7 @@ BLUE_BROWN = [
 
 
 ##############################################################################
-@lru_cache()
+@lru_cache
 def blue_brown_map(value: int, _: int) -> Color:
     """Calculate a colour for an escape value.
 
