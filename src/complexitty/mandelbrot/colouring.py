@@ -2,8 +2,9 @@
 
 ##############################################################################
 # Python imports.
+from collections.abc import Callable
 from functools import lru_cache
-from typing import Callable, Final, TypeAlias
+from typing import Final, TypeAlias
 
 ##############################################################################
 # Textual imports.
@@ -51,7 +52,7 @@ BLUE_BROWN = [
 
 
 ##############################################################################
-@lru_cache()
+@lru_cache
 def blue_brown_map(value: int, _: int) -> Color:
     """Calculate a colour for an escape value.
 
