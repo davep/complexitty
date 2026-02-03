@@ -206,7 +206,8 @@ class Main(EnhancedScreen[None]):
             else 0
         )
         message.mandelbrot.border_title = (
-            f"X: {message.mandelbrot.x_position:.{x_precision + 2}f} | Y: {message.mandelbrot.y_position:.{y_precision + 2}f} "
+            f"X: {message.mandelbrot.x_position:.{x_precision + 2}f} | "
+            f"Y: {message.mandelbrot.y_position:.{y_precision + 2}f} "
             f"| Zoom: {message.mandelbrot.zoom:.4f}"
         )
         message.mandelbrot.border_subtitle = (
@@ -315,7 +316,8 @@ class Main(EnhancedScreen[None]):
                     )
             else:
                 self.notify(
-                    "Please provide both the [i]x[/] and [i]y[/] coordinates separated by a comma or space. For example:\n\n"
+                    "Please provide both the [i]x[/] and [i]y[/] coordinates "
+                    "separated by a comma or space. For example:\n\n"
                     "[i]0.1, 0.1[/]\n\nor:\n\n"
                     "[i]0.1 0.1[/]",
                     title="Invalid location input",
