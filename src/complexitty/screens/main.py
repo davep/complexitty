@@ -12,6 +12,7 @@ from typing import Final, NamedTuple, TypeAlias
 # Textual imports.
 from textual import on, work
 from textual.app import ComposeResult
+from textual.getters import query_one
 from textual.widgets import Footer, Header
 
 ##############################################################################
@@ -136,6 +137,9 @@ class Main(EnhancedScreen[None]):
     COMMANDS = {MainCommands}
     HELP = "## Commands and keys"
 
+    mandelbrot = query_one(Mandelbrot)
+    """The plot of the Mandelbrot set."""
+
     def __init__(self, arguments: Namespace) -> None:
         """Initialise the screen object.
 
@@ -156,7 +160,7 @@ class Main(EnhancedScreen[None]):
 
     def on_mount(self) -> None:
         """Configure the Mandelbrot once the DOM is ready."""
-        self.query_one(Mandelbrot).set(
+        self.mandelbrot.set(
             max_iteration=self._arguments.max_iteration,
             multibrot=self._arguments.multibrot,
             zoom=self._arguments.zoom,
@@ -218,7 +222,7 @@ class Main(EnhancedScreen[None]):
 
     def _remember(self) -> None:
         """Remember the current situation."""
-        plot = self.query_one(Mandelbrot)
+        plot = self.mandelbrot
         self._history.append(
             Situation(
                 plot.x_position,
@@ -237,7 +241,7 @@ class Main(EnhancedScreen[None]):
             change: The amount to change the zoom by.
         """
         self._remember()
-        self.query_one(Mandelbrot).zoom *= change
+        self.mandelbrot.zoom *= change
 
     def action_move(self, x: int, y: int) -> None:
         """Move the plot in the indicated direction.
@@ -247,7 +251,7 @@ class Main(EnhancedScreen[None]):
             y: The number of pixels to move in the Y direction.
         """
         self._remember()
-        self.query_one(Mandelbrot).move(x, y)
+        self.mandelbrot.move(x, y)
 
     def action_iterate(self, change: int) -> None:
         """Change the maximum iteration.
@@ -256,7 +260,7 @@ class Main(EnhancedScreen[None]):
             change: The change to make to the maximum iterations.
         """
         self._remember()
-        self.query_one(Mandelbrot).max_iteration += change
+        self.mandelbrot.max_iteration += change
 
     def action_set_colour(self, colour_map: str) -> None:
         """Set the colour map for the plot.
@@ -264,7 +268,7 @@ class Main(EnhancedScreen[None]):
         Args:
             colour_map: The name of the colour map to use.
         """
-        self.query_one(Mandelbrot).colour_map = get_colour_map(colour_map)
+        self.mandelbrot.colour_map = get_colour_map(colour_map)
 
     def action_multibrot(self, change: int) -> None:
         """Change the 'multibrot' value.
@@ -273,7 +277,7 @@ class Main(EnhancedScreen[None]):
             change: The change to make to the 'multibrot' value.
         """
         self._remember()
-        self.query_one(Mandelbrot).multibrot += change
+        self.mandelbrot.multibrot += change
 
     def action_goto(self, x: int, y: int) -> None:
         """Go to a specific location.
@@ -282,13 +286,13 @@ class Main(EnhancedScreen[None]):
             x: The X location to go to.
             y: The Y location to go to.
         """
-        self.query_one(Mandelbrot).goto(x, y)
+        self.mandelbrot.goto(x, y)
         self._remember()
 
     def action_reset_command(self) -> None:
         """Reset the plot to its default values."""
         self._remember()
-        self.query_one(Mandelbrot).reset()
+        self.mandelbrot.reset()
 
     _VALID_LOCATION: Final[Pattern[str]] = compile(
         r"(?P<x>[^, ]+) *[, ] *(?P<y>[^, ]+)"
@@ -311,9 +315,7 @@ class Main(EnhancedScreen[None]):
                             severity="error",
                         )
                 if "x" in target and "y" in target:
-                    self.query_one(Mandelbrot).goto(
-                        float(parsed["x"]), float(parsed["y"])
-                    )
+                    self.mandelbrot.goto(float(parsed["x"]), float(parsed["y"]))
             else:
                 self.notify(
                     "Please provide both the [i]x[/] and [i]y[/] coordinates "
@@ -326,7 +328,7 @@ class Main(EnhancedScreen[None]):
 
     def action_copy_command_line_to_clipboard_command(self) -> None:
         """Copy the current view as a command, to the clipboard."""
-        plot = self.query_one(Mandelbrot)
+        plot = self.mandelbrot
         command = (
             f"complexitty "
             f"--x-position={plot.x_position} "
@@ -346,7 +348,7 @@ class Main(EnhancedScreen[None]):
         except IndexError:
             return
         self.refresh_bindings()
-        self.query_one(Mandelbrot).set(
+        self.mandelbrot.set(
             x_position=situation.x_position,
             y_position=situation.y_position,
             zoom=situation.zoom,
