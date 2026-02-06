@@ -359,7 +359,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "textual", specifier = ">=3.1.0" },
+    { name = "textual", specifier = ">=3.7.0" },
     { name = "textual-canvas", specifier = ">=0.3.0" },
     { name = "textual-enhanced", specifier = ">=0.13.0" },
     { name = "xdg-base-dirs", specifier = ">=6.0.2" },
