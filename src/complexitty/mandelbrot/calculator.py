@@ -12,10 +12,10 @@ type MandelbrotCalculator = Callable[[float, float, float, int], int]
 """Type of the Mandelbrot calculator function."""
 
 try:
-    from numba import jit as _numba_jit  # type: ignore[import-not-found]
+    from numba import jit  # type: ignore[import-not-found]
 
     def _maybe_faster(calculator: MandelbrotCalculator) -> MandelbrotCalculator:
-        return cast(MandelbrotCalculator, _numba_jit(nopython=True)(calculator))
+        return cast(MandelbrotCalculator, jit(nopython=True)(calculator))
 
 except ImportError:
 
