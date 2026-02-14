@@ -12,7 +12,7 @@ dependencies = [
     "xdg-base-dirs>=6.0.2",
 ]
 readme = "README.md"
-requires-python = ">= 3.10"
+requires-python = ">= 3.12"
 license = "GPL-3.0-or-later"
 keywords = [
     "terminal",
@@ -29,8 +29,6 @@ classifiers = [
     "Intended Audience :: End Users/Desktop",
     "Intended Audience :: Science/Research",
     "Operating System :: OS Independent",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
@@ -49,6 +47,11 @@ Documentation = "https://complexitty.davep.dev/"
 Source = "https://github.com/davep/complexitty"
 Issues = "https://github.com/davep/complexitty/issues"
 Discussions = "https://github.com/davep/complexitty/discussions"
+
+[project.optional-dependencies]
+faster = [
+    "numba>=0.59.0",
+]
 
 [project.scripts]
 complexitty = "complexitty.__main__:main"

@@ -6,7 +6,7 @@ from argparse import Namespace
 from collections import deque
 from math import floor, log10
 from re import Pattern, compile
-from typing import Final, NamedTuple, TypeAlias
+from typing import Final, NamedTuple
 
 ##############################################################################
 # Textual imports.
@@ -78,7 +78,7 @@ class Situation(NamedTuple):
 
 
 ##############################################################################
-PlotHistory: TypeAlias = deque[Situation]
+PlotHistory = deque[Situation]
 """Type of the plot history."""
 
 

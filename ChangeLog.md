@@ -1,5 +1,13 @@
 # Complexitty ChangeLog
 
+## Unreleased
+
+**Released: WiP**
+
+- Dropped support for Python 3.10 and Python 3.11.
+- Added optional support for using [Numba](https://numba.pydata.org) to
+  speed up the calculations.
+
 ## v1.0.0
 
 **Released: 2025-10-03**
