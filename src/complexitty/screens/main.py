@@ -87,7 +87,7 @@ def _faster_label() -> str:
     Returns:
        The labelto show the faster status.
     """
-    return "| [b]Faster[/]" if find_spec("numba") else ""
+    return " | [b]Faster[/]" if find_spec("numba") else ""
 
 
 ##############################################################################
