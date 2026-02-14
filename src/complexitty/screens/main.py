@@ -4,6 +4,8 @@
 # Python imports.
 from argparse import Namespace
 from collections import deque
+from functools import cache
+from importlib.util import find_spec
 from math import floor, log10
 from re import Pattern, compile
 from typing import Final, NamedTuple
@@ -75,6 +77,17 @@ class Situation(NamedTuple):
     """The maximum iteration."""
     multibrot: float
     """The multibrot setting."""
+
+
+##############################################################################
+@cache
+def _faster_label() -> str:
+    """Get the label that gives our faster status.
+
+    Returns:
+       The labelto show the faster status.
+    """
+    return "| [b]Faster[/]" if find_spec("numba") else ""
 
 
 ##############################################################################
@@ -217,7 +230,7 @@ class Main(EnhancedScreen[None]):
         message.mandelbrot.border_subtitle = (
             f"{message.mandelbrot.multibrot:0.2f} multibrot | "
             f"{message.mandelbrot.max_iteration:0.2f} iterations | "
-            f"{message.elapsed:0.4f} seconds"
+            f"{message.elapsed:0.4f} seconds{_faster_label()}"
         )
 
     def _remember(self) -> None:
