@@ -8,42 +8,23 @@ from typing import cast
 ##############################################################################
 # Set up for [faster] support.
 
-type TMandelbrot = Callable[[float, float, float, int], int]
+type MandelbrotCalculator = Callable[[float, float, float, int], int]
 """Type of the Mandelbrot calculator function."""
-type TDecorator = Callable[[TMandelbrot], TMandelbrot]
-"""Type of the decorator for the Mandelbrot function."""
-
-jit: Callable[[bool], TDecorator]
-"""Decorator for maybe JIT-compiling a the Mandelbrot calculation function."""
 
 try:
     from numba import jit as _numba_jit  # type: ignore[import-not-found]
 
-    def _jit(nopython: bool = True) -> TDecorator:
-        """Typed wrapper for Numba's jit decorator."""
-
-        def decorator(func: TMandelbrot) -> TMandelbrot:
-            return cast(TMandelbrot, _numba_jit(nopython=nopython)(func))
-
-        return decorator
-
-    jit = _jit
+    def _maybe_faster(calculator: MandelbrotCalculator) -> MandelbrotCalculator:
+        return cast(MandelbrotCalculator, _numba_jit(nopython=True)(calculator))
 
 except ImportError:
 
-    def _no_jit(nopython: bool = True) -> TDecorator:
-        """No-op decorator when Numba is not installed."""
-
-        def decorator(func: TMandelbrot) -> TMandelbrot:
-            return func
-
-        return decorator
-
-    jit = _no_jit
+    def _maybe_faster(calculator: MandelbrotCalculator) -> MandelbrotCalculator:
+        return calculator
 
 
 ##############################################################################
-@jit(nopython=True)
+@_maybe_faster
 def mandelbrot(x: float, y: float, multibrot: float, max_iteration: int) -> int:
     """Return the Mandelbrot calculation for the given point.
 
