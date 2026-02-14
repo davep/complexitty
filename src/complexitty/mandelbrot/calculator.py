@@ -8,17 +8,22 @@ from typing import cast
 ##############################################################################
 # Set up for [faster] support.
 
-jit: Callable[[bool], object]
+type TMandelbrot = Callable[[float, float, float, int], int]
+"""Type of the Mandelbrot calculator function."""
+type TDecorator = Callable[[TMandelbrot], TMandelbrot]
+"""Type of the decorator for the Mandelbrot function."""
+
+jit: Callable[[bool], TDecorator]
 """Decorator for maybe JIT-compiling a the Mandelbrot calculation function."""
 
 try:
     from numba import jit as _numba_jit  # type: ignore[import-not-found]
 
-    def _jit[F](nopython: bool = True) -> Callable[[F], F]:
+    def _jit(nopython: bool = True) -> TDecorator:
         """Typed wrapper for Numba's jit decorator."""
 
-        def decorator(func: F) -> F:
-            return cast(F, _numba_jit(nopython=nopython)(func))
+        def decorator(func: TMandelbrot) -> TMandelbrot:
+            return cast(TMandelbrot, _numba_jit(nopython=nopython)(func))
 
         return decorator
 
@@ -26,10 +31,10 @@ try:
 
 except ImportError:
 
-    def _no_jit[F](nopython: bool = True) -> Callable[[F], F]:
+    def _no_jit(nopython: bool = True) -> TDecorator:
         """No-op decorator when Numba is not installed."""
 
-        def decorator(func: F) -> F:
+        def decorator(func: TMandelbrot) -> TMandelbrot:
             return func
 
         return decorator
