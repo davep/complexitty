@@ -4,14 +4,14 @@
 # Python imports.
 from collections.abc import Callable
 from functools import lru_cache
-from typing import Final, TypeAlias
+from typing import Final
 
 ##############################################################################
 # Textual imports.
 from textual.color import Color, Gradient
 
 ##############################################################################
-ColourMap: TypeAlias = Callable[[int, int], Color]
+type ColourMap = Callable[[int, int], Color]
 """Type for a colour map."""
 
 

@@ -1,7 +1,30 @@
 """The code for calculating the Mandelbrot set."""
 
+##############################################################################
+# Python imports.
+from collections.abc import Callable
+from typing import cast
 
 ##############################################################################
+# Set up for [faster] support.
+
+type MandelbrotCalculator = Callable[[float, float, float, int], int]
+"""Type of the Mandelbrot calculator function."""
+
+try:
+    from numba import jit  # type: ignore[import-not-found]
+
+    def _maybe_faster(calculator: MandelbrotCalculator) -> MandelbrotCalculator:
+        return cast(MandelbrotCalculator, jit(nopython=True)(calculator))
+
+except ImportError:
+
+    def _maybe_faster(calculator: MandelbrotCalculator) -> MandelbrotCalculator:
+        return calculator
+
+
+##############################################################################
+@_maybe_faster
 def mandelbrot(x: float, y: float, multibrot: float, max_iteration: int) -> int:
     """Return the Mandelbrot calculation for the given point.
 

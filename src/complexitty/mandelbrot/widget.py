@@ -10,6 +10,10 @@ from dataclasses import dataclass
 from time import monotonic
 
 ##############################################################################
+# Typing extension imports.
+from typing import Self
+
+##############################################################################
 # Textual imports.
 from textual import on
 from textual.events import Mount, Resize
@@ -19,10 +23,6 @@ from textual.reactive import var
 ##############################################################################
 # Textual-canvas imports.
 from textual_canvas import Canvas
-
-##############################################################################
-# Typing extension imports.
-from typing_extensions import Self
 
 ##############################################################################
 # Local imports.

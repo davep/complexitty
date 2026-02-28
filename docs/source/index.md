@@ -33,15 +33,24 @@ uvx complexitty
 
 to run `complexitty`.
 
-### Homebrew
-
-The package is available via [Homebrew](https://brew.sh). Use the following
-commands to install:
+If you don't have `uv` installed you can use [uvx.sh](https://uvx.sh) to
+perform the installation. For GNU/Linux or macOS or similar:
 
 ```sh
-brew tap davep/homebrew
-brew install complexitty
+curl -LsSf uvx.sh/complexitty/install.sh | sh
 ```
+
+or on Windows:
+
+```sh
+powershell -ExecutionPolicy ByPass -c "irm https://uvx.sh/complexitty/install.ps1 | iex"
+```
+
+### Going faster
+
+Complexitty has a (currently experimental) installation option to make it go
+faster using [Numba](http://numba.pydata.org). If you want to try this out,
+install it as `complexitty[faster]` rather than `complexitty`.
 
 ## Running Complexitty
 
