@@ -48,6 +48,12 @@ or on Windows:
 powershell -ExecutionPolicy ByPass -c "irm https://uvx.sh/complexitty/install.ps1 | iex"
 ```
 
+### Going faster
+
+Complexitty has a (currently experimental) installation option to make it go
+faster using [Numba](http://numba.pydata.org). If you want to try this out,
+install it as `complexitty[faster]` rather than `complexitty`.
+
 ## Using Complexitty
 
 Once you've installed Complexitty using one of the above methods, you can
